@@ -27,10 +27,14 @@
 ## In Progress
 None
 
-## Untested Features
-- Kanban drag-and-drop write-back to content-pipeline.md
-- Recommendation voting write-back to projects.md
-- New content modal write-back
+## Verified (2026-02-08)
+- Kanban stage move write-back — API + file diff + browser confirmed
+- Recommendation voting write-back — API + file diff + browser confirmed
+- New content modal write-back — API + file diff + browser confirmed
+- All 5 pages render with real data — browser screenshots confirmed
+- Production build passes clean (0 errors)
+
+## Untested
 - File watcher + LiveRefresh WebSocket
 - Calendar view visual polish
 

@@ -1,29 +1,43 @@
 # Status
 
 ## Current State
-**Phase**: Initial Build Complete
+**Phase**: Phase 2 Complete — Visual Overhaul Done
 **Branch**: `main`
+**GitHub**: github.com/blueOctopusAI/mission-control
 **Last Updated**: 2026-02-08
 
 ## Recently Completed
 - Full Next.js 16 project scaffold with all dependencies
 - 7 markdown parsers (projects, content-pipeline, intake-log, intelligence-brief, bookmarks, people, tools)
 - 3 write-back modules (content-pipeline, projects/recommendations)
-- Dashboard home with animated octopus, metrics row, focus panel, alerts, recommendations with voting, activity feed
+- Dashboard home with metrics row, active project mini-cards, focus panel, alerts, recommendations with voting, activity feed
 - Content pipeline with kanban board (@dnd-kit drag & drop), calendar view, platform filter, new content modal
 - Projects page with tier-grouped grid, expandable project cards, synergy graph (canvas)
 - Research page with intake timeline, signal cards, bookmark browser with search/filter, people grid
 - Tools page with status-badged card grid, expandable details, evaluation progress bar
 - Sidebar navigation with custom SVG icons
-- Full dark command-center theme (CSS custom properties)
+- **Visual overhaul**: Dark glassmorphism theme, grid background pattern, radial glow effects, backdrop-filter blur cards, hover-lift animations, tier-based color coding, platform-colored content cards
+- Octopus removed from dashboard (replaced with ProjectMiniCard grid)
 - File watcher script (chokidar + WebSocket)
 - LiveRefresh client component for auto-refresh on markdown changes
 - 3 API routes for write-back operations
 - Orchestration setup (orchestrate, frontend, test, docs commands)
-- CLAUDE.md for the project
+- Initial commit pushed to GitHub
 
 ## In Progress
-None — ready for first test run
+None
+
+## Untested Features
+- Kanban drag-and-drop write-back to content-pipeline.md
+- Recommendation voting write-back to projects.md
+- New content modal write-back
+- File watcher + LiveRefresh WebSocket
+- Calendar view visual polish
+
+## Not Yet Built
+- Global search across all pages
+- Project tier drag-and-drop reordering
+- Responsive/mobile layout testing
 
 ## Blockers
 None
@@ -39,10 +53,4 @@ None
 ```
 npm run dev          # Dashboard at localhost:3000
 npx tsx scripts/watch.ts  # File watcher at ws://localhost:3001
-```
-
-## To Test
-```
-npm run build   # Check for TypeScript errors
-npm run dev     # Verify all pages render with real data
 ```

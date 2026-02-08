@@ -1,36 +1,51 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Mission Control
 
-## Getting Started
+Localhost dashboard for [Blue Octopus Technology](https://blueoctopus.tech)'s intelligence hub. Visualizes project portfolio, content pipeline, research intelligence, and tool evaluations — all powered by markdown files as the database.
 
-First, run the development server:
+## Quick Start
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev          # Dashboard at localhost:3000
+npx tsx scripts/watch.ts  # File watcher + WebSocket (optional, enables live refresh)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Pages
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | What |
+|-------|------|
+| `/` | Dashboard — metrics, active project cards, recommendations, activity feed |
+| `/projects` | Project registry — tier-grouped cards, synergy graph |
+| `/content` | Content pipeline — kanban board with drag-and-drop, calendar, platform filters |
+| `/research` | Research — intake timeline, key signals, bookmarks, people to watch |
+| `/tools` | Tool evaluations — status-badged cards, evaluation progress |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architecture
 
-## Learn More
+```
+intelligence-hub/       <- DATA (markdown source of truth)
+  projects.md, content-pipeline.md, intelligence-brief.md,
+  intake-log.md, bookmarks.md, people-to-watch.md, knowledge/
 
-To learn more about Next.js, take a look at the following resources:
+mission-control/        <- VISUAL LAYER (this project)
+  src/app/              Next.js App Router pages + API routes
+  src/components/       React components by domain
+  src/lib/parsers/      7 markdown parsers
+  src/lib/writers/      3 write-back modules
+  scripts/watch.ts      chokidar + WebSocket file watcher
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Tech Stack
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Next.js 16, React 19, TypeScript, Tailwind CSS v4, @dnd-kit (drag & drop), Framer Motion, chokidar + WebSocket, recharts.
 
-## Deploy on Vercel
+## Write-back
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The dashboard writes changes back to markdown files:
+- Kanban drag-and-drop updates Stage in `content-pipeline.md`
+- Recommendation voting updates Votes in `projects.md`
+- New content pieces append to `content-pipeline.md`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Design
+
+Dark glassmorphism command-center aesthetic. Grid background pattern, glow effects, backdrop-filter blur cards, tier-based color coding (blue=ACTIVE, teal=READY, purple=INCUBATING).

@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A localhost-only Next.js dashboard for Blue Octopus Technology's intelligence hub. Reads markdown files from `/Users/jashanno/Developer/projects/intelligence-hub` and provides interactive project management, content pipeline tracking, and a system health visualization (the octopus).
+A localhost-only Next.js dashboard for Blue Octopus Technology's intelligence hub. Reads markdown files from `/Users/jashanno/Developer/projects/intelligence-hub` and provides interactive project management, content pipeline tracking, and research visualization.
 
 **No database. No cloud. No auth.** Markdown files are the database. Localhost only.
 
@@ -48,7 +48,7 @@ npx tsx scripts/watch.ts  # Start file watcher (WebSocket on :3001)
 
 | Route | What | Data Source |
 |-------|------|-------------|
-| `/` | Dashboard home — octopus, metrics, recommendations, activity | All files |
+| `/` | Dashboard home — metrics, project cards, recommendations, activity | All files |
 | `/projects` | Project registry — tier grid, synergy graph | projects.md |
 | `/content` | Content pipeline — kanban board, calendar | content-pipeline.md |
 | `/research` | Research — timeline, signals, bookmarks, people | intake-log.md, intelligence-brief.md, bookmarks.md, people-to-watch.md |
@@ -78,15 +78,6 @@ npx tsx scripts/watch.ts  # Start file watcher (WebSocket on :3001)
 - Purple: `#8b5cf6` (INCUBATING tier)
 - Status: green (healthy), amber (stale), red (blocked)
 
-## The Octopus
-
-Functional data visualization, not a mascot:
-- 8 tentacles connect to highest-priority projects
-- Thickness = tier priority (ACTIVE thicker)
-- Color = tier (blue=ACTIVE, teal=READY, purple=INCUBATING)
-- Red pulse = blocker detected
-- Eye blink rate = system health (faster when data is stale)
-
 ## Key Files
 
 | File | Purpose |
@@ -95,11 +86,11 @@ Functional data visualization, not a mascot:
 | `src/lib/types.ts` | All TypeScript interfaces |
 | `src/lib/parsers/` | One parser per markdown file type |
 | `src/lib/writers/` | Write-back functions for content + projects |
-| `src/components/octopus/` | SVG octopus with Framer Motion animations |
+| `src/components/octopus/` | SVG octopus (legacy, not rendered on dashboard) |
 | `scripts/watch.ts` | chokidar + WebSocket file watcher |
 
 ## Related Projects
 
 - **intelligence-hub** — Data source (markdown files)
 - **blue-octopus-website** — Storefront (content flows from pipeline to blog)
-- **orchestration-bootstrap** — Skill templates used for orchestration setup
+- **GitHub:** github.com/blueOctopusAI/mission-control

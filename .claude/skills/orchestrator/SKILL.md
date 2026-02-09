@@ -1,6 +1,6 @@
 ---
-description: Start session - read project state, brief user, coordinate work
-version: 1.0.0
+name: orchestrator
+description: Project coordinator for session management, work delegation, backlog prioritization, status tracking, and multi-skill orchestration
 ---
 
 # Session Orchestration (v1.0.0)
@@ -30,9 +30,9 @@ When the user gives you a task, you MUST:
 
 1. **Analyze** what type of work is needed
 2. **Invoke** the appropriate skill(s) using the Skill tool:
-   - Frontend/UI work → invoke `/frontend`
-   - Testing → invoke `/test`
-   - Documentation → invoke `/docs`
+   - Frontend/UI work → invoke `frontend-expert`
+   - Testing → invoke `test-engineer`
+   - Documentation → invoke `docs-maintainer`
 
 3. **Sequence** multi-step tasks across skills
 
@@ -42,9 +42,9 @@ When the user gives you a task, you MUST:
 
 | Skill | Domain | When to Invoke |
 |-------|--------|----------------|
-| `/frontend` | UI/Client | Any UI changes, components, pages, hooks |
-| `/test` | Testing | Run tests, fix failures, add coverage |
-| `/docs` | Documentation | Update docs after code changes |
+| `frontend-expert` | UI/Client | Any UI changes, components, pages, hooks |
+| `test-engineer` | Testing | Run tests, fix failures, add coverage |
+| `docs-maintainer` | Documentation | Update docs after code changes |
 
 ## During Work
 
@@ -76,5 +76,3 @@ When user indicates session is ending:
 - **NEVER** use Bash to delete, move, or modify source files
 - **NEVER** run build/dev commands directly
 - **NEVER** modify code, components, or config files
-
-ARGUMENTS: $ARGUMENTS

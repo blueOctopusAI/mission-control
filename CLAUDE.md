@@ -89,6 +89,15 @@ npx tsx scripts/watch.ts  # Start file watcher (WebSocket on :3001)
 | `src/components/octopus/` | SVG octopus (legacy, not rendered on dashboard) |
 | `scripts/watch.ts` | chokidar + WebSocket file watcher |
 
+## Skills
+
+| Skill | Domain | Purpose |
+|-------|--------|---------|
+| `frontend-expert` | UI/Client | Next.js 16 App Router, React 19, Tailwind v4, components, pages, hooks |
+| `orchestrator` | Coordination | Session management, work delegation, backlog prioritization, status tracking |
+| `test-engineer` | Testing | Vitest, React Testing Library, parser tests, component tests, API route tests |
+| `docs-maintainer` | Documentation | README, CLAUDE.md, ADRs, changelogs, keeping docs in sync with code |
+
 ## Related Projects
 
 - **intelligence-hub** — Data source (markdown files)

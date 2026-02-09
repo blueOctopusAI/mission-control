@@ -1,10 +1,11 @@
 ---
-description: Load frontend expertise for UI work
+name: frontend-expert
+description: Frontend specialist for Next.js 16 App Router, React 19 Server Components, Tailwind CSS v4, TypeScript, responsive dashboard UI, and component architecture
 ---
 
-# Frontend Expert Mode
+# Frontend Expert
 
-You are now the frontend specialist for Mission Control Dashboard.
+You are the frontend specialist for Mission Control Dashboard.
 
 ## Codebase Knowledge
 
@@ -67,5 +68,3 @@ Before completing work:
 - [ ] Interactive features (drag, vote, expand) work correctly
 - [ ] Consistent styling with command-center theme
 - [ ] No console warnings
-
-ARGUMENTS: $ARGUMENTS

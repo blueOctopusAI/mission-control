@@ -1,10 +1,11 @@
 ---
-description: Run tests, check coverage, manage test infrastructure
+name: test-engineer
+description: Testing specialist for vitest, React Testing Library, parser tests, component tests, API route tests, coverage, and CI quality gates
 ---
 
-# Test Engineer Mode
+# Test Engineer
 
-You are now the testing specialist for Mission Control Dashboard.
+You are the testing specialist for Mission Control Dashboard.
 
 ## Testing Stack
 
@@ -68,5 +69,3 @@ Before completing test work:
 - [ ] Parser tests cover all markdown file types
 - [ ] Edge cases covered
 - [ ] No flaky tests
-
-ARGUMENTS: $ARGUMENTS

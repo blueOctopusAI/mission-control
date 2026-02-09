@@ -4,8 +4,9 @@ import AlertsPanel from "@/components/dashboard/AlertsPanel";
 import FocusPanel from "@/components/dashboard/FocusPanel";
 import RecommendationCard from "@/components/dashboard/RecommendationCard";
 import ActivityFeed from "@/components/dashboard/ActivityFeed";
-import { parseProjects, parseContentPipeline, parseIntakeLog, parseTools, parsePeople } from "@/lib/parsers";
+import { parseProjects, parseContentPipeline, parseIntakeLog, parseTools, parsePeople, parseVideoPipeline } from "@/lib/parsers";
 import type { Alert, DashboardMetrics, Project } from "@/lib/types";
+import VideoPipelineWidget from "@/components/dashboard/VideoPipelineWidget";
 import fs from "fs";
 import { FILES } from "@/lib/config";
 
@@ -137,6 +138,7 @@ export default function DashboardPage() {
   const logData = parseIntakeLog();
   const metrics = computeMetrics();
   const alerts = computeAlerts();
+  const pipelineData = parseVideoPipeline();
 
   const activeProjects = projectsData.projects.filter((p) => p.tier === "ACTIVE" || p.tier === "READY" || p.tier === "INCUBATING");
 
@@ -166,6 +168,13 @@ export default function DashboardPage() {
               projects={projectsData.projects}
             />
             <AlertsPanel alerts={alerts} />
+          </div>
+        </div>
+
+        {/* Video Pipeline */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+          <div className="lg:col-span-1">
+            <VideoPipelineWidget data={pipelineData} />
           </div>
         </div>
 

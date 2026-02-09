@@ -5,3 +5,4 @@ export { parseIntelligenceBrief } from "./intelligence-brief";
 export { parseBookmarks } from "./bookmarks";
 export { parsePeople } from "./people";
 export { parseTools } from "./tools";
+export { parseVideoPipeline } from "./video-pipeline";

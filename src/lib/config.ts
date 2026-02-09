@@ -13,6 +13,7 @@ export const FILES = {
   people: path.join(INTELLIGENCE_HUB_PATH, "people-to-watch.md"),
   toolsDir: path.join(INTELLIGENCE_HUB_PATH, "knowledge/tools"),
   strategiesDir: path.join(INTELLIGENCE_HUB_PATH, "knowledge/strategies"),
+  videoPipeline: path.join(INTELLIGENCE_HUB_PATH, "video-pipeline-status.md"),
 } as const;
 
 export const WS_PORT = 3001;

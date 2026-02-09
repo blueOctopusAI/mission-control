@@ -9,6 +9,7 @@ const NAV_ITEMS = [
   { href: "/content", label: "Content", icon: "kanban" },
   { href: "/research", label: "Research", icon: "search" },
   { href: "/tools", label: "Tools", icon: "wrench" },
+  { href: "/pipeline", label: "Pipeline", icon: "video" },
 ];
 
 function NavIcon({ icon, active }: { icon: string; active: boolean }) {
@@ -50,6 +51,13 @@ function NavIcon({ icon, active }: { icon: string; active: boolean }) {
       return (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
           <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        </svg>
+      );
+    case "video":
+      return (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <polygon points="23 7 16 12 23 17 23 7" />
+          <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
         </svg>
       );
     default:

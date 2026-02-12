@@ -12,13 +12,13 @@ interface KanbanColumnProps {
 }
 
 const STAGE_COLORS: Record<string, string> = {
-  Idea: "#475569",
-  Research: "#a78bfa",
-  Outline: "#2dd4bf",
-  Draft: "#60a5fa",
-  Review: "#fbbf24",
-  Scheduled: "#34d399",
-  Published: "#34d399",
+  Idea: "#64748b",
+  Research: "#c4b5fd",
+  Outline: "#5eead4",
+  Draft: "#7bb5ff",
+  Review: "#fcd34d",
+  Scheduled: "#4ade80",
+  Published: "#4ade80",
 };
 
 function DraggableCard({ piece }: { piece: ContentPiece }) {
@@ -58,13 +58,13 @@ export default function KanbanColumn({ stage, pieces, count }: KanbanColumnProps
           className="w-2 h-2 rounded-full"
           style={{ background: stageColor, boxShadow: `0 0 6px ${stageColor}40` }}
         />
-        <span className="text-[11px] font-semibold" style={{ color: "var(--text-secondary)" }}>
+        <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
           {stage}
         </span>
         <span
-          className="text-[10px] font-mono-data font-bold ml-auto px-1.5 py-0.5 rounded-md"
+          className="text-xs font-mono-data font-bold ml-auto px-2 py-0.5 rounded-md"
           style={{
-            background: `${stageColor}12`,
+            background: `${stageColor}18`,
             color: stageColor,
           }}
         >

@@ -31,24 +31,24 @@ function SignalCard({ signal }: { signal: Signal }) {
           {signal.number}
         </span>
         <div className="min-w-0 flex-1">
-          <h4 className="text-[13px] font-semibold leading-snug" style={{ color: "var(--text-primary)" }}>
+          <h4 className="text-sm font-semibold leading-snug" style={{ color: "var(--text-primary)" }}>
             {signal.title}
           </h4>
           {expanded && (
             <div className="mt-3 space-y-2.5">
-              <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                 {signal.description}
               </p>
               {signal.position && (
                 <div
-                  className="text-xs p-2.5 rounded-lg"
+                  className="text-sm p-3 rounded-lg"
                   style={{
-                    background: "rgba(45, 212, 191, 0.06)",
+                    background: "rgba(94, 234, 212, 0.08)",
                     color: "var(--accent-teal)",
-                    border: "1px solid rgba(45, 212, 191, 0.12)",
+                    border: "1px solid rgba(94, 234, 212, 0.15)",
                   }}
                 >
-                  <span className="font-bold text-[10px] uppercase tracking-wider">Our position: </span>
+                  <span className="font-bold text-xs uppercase tracking-wider">Our position: </span>
                   {signal.position}
                 </div>
               )}
@@ -79,10 +79,10 @@ export default function SignalCards({ signals }: SignalCardsProps) {
           <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
           <circle cx="12" cy="12" r="3" />
         </svg>
-        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
           Key Signals
         </h3>
-        <span className="text-[10px] font-mono-data font-bold ml-auto" style={{ color: "var(--accent-blue-light)" }}>
+        <span className="text-xs font-mono-data font-bold ml-auto" style={{ color: "var(--accent-blue-light)" }}>
           {signals.length}
         </span>
       </div>

@@ -83,12 +83,12 @@ function computeAlerts(): Alert[] {
 }
 
 const TIER_COLORS: Record<string, string> = {
-  ACTIVE: "#60a5fa",
-  READY: "#2dd4bf",
-  INCUBATING: "#a78bfa",
+  ACTIVE: "#7bb5ff",
+  READY: "#5eead4",
+  INCUBATING: "#c4b5fd",
   SUPPORTING: "#94a3b8",
-  DORMANT: "#475569",
-  PORTFOLIO: "#334155",
+  DORMANT: "#64748b",
+  PORTFOLIO: "#475569",
 };
 
 function ProjectMiniCard({ project }: { project: Project }) {
@@ -97,34 +97,34 @@ function ProjectMiniCard({ project }: { project: Project }) {
 
   return (
     <div
-      className="rounded-lg p-3 transition-all hover-lift"
+      className="rounded-lg p-3.5 transition-all hover-lift"
       style={{
-        background: `linear-gradient(135deg, ${color}08, ${color}03)`,
-        border: `1px solid ${color}20`,
+        background: `linear-gradient(135deg, ${color}12, ${color}06)`,
+        border: `1px solid ${color}30`,
       }}
     >
-      <div className="flex items-center gap-2 mb-1">
+      <div className="flex items-center gap-2 mb-1.5">
         <div
-          className="w-2 h-2 rounded-full flex-shrink-0"
+          className="w-2.5 h-2.5 rounded-full flex-shrink-0"
           style={{
             background: hasBlocker ? "var(--status-blocked)" : color,
-            boxShadow: hasBlocker ? "0 0 6px rgba(248, 113, 113, 0.5)" : `0 0 6px ${color}40`,
+            boxShadow: hasBlocker ? "0 0 8px rgba(251, 113, 133, 0.5)" : `0 0 8px ${color}50`,
           }}
         />
-        <span className="text-xs font-semibold truncate" style={{ color: "var(--text-primary)" }}>
+        <span className="text-sm font-semibold truncate" style={{ color: "var(--text-primary)" }}>
           {project.name}
         </span>
-        <span className={`badge badge-${project.tier.toLowerCase()} text-[8px] ml-auto flex-shrink-0`}>
+        <span className={`badge badge-${project.tier.toLowerCase()} text-[9px] ml-auto flex-shrink-0`}>
           {project.tier}
         </span>
       </div>
-      <p className="text-[10px] truncate" style={{ color: "var(--text-muted)" }}>
-        {project.what?.slice(0, 60)}{project.what && project.what.length > 60 ? "..." : ""}
+      <p className="text-xs truncate" style={{ color: "var(--text-secondary)" }}>
+        {project.what?.slice(0, 70)}{project.what && project.what.length > 70 ? "..." : ""}
       </p>
       {project.nextActions[0] && (
-        <div className="text-[10px] mt-1.5 flex items-start gap-1.5">
-          <span style={{ color: "var(--text-muted)" }}>Next:</span>
-          <span className="truncate" style={{ color: "var(--text-secondary)" }}>
+        <div className="text-xs mt-1.5 flex items-start gap-1.5">
+          <span className="font-semibold" style={{ color: "var(--text-muted)" }}>Next:</span>
+          <span className="truncate" style={{ color: "var(--text-primary)" }}>
             {project.nextActions[0]}
           </span>
         </div>

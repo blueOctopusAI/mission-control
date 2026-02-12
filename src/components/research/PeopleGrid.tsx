@@ -5,10 +5,10 @@ interface PeopleGridProps {
 }
 
 const PRIORITY_COLORS: Record<string, string> = {
-  HIGH: "#f87171",
-  "MEDIUM-HIGH": "#fbbf24",
-  MEDIUM: "#60a5fa",
-  LOW: "#475569",
+  HIGH: "#fb7185",
+  "MEDIUM-HIGH": "#fcd34d",
+  MEDIUM: "#7bb5ff",
+  LOW: "#64748b",
 };
 
 export default function PeopleGrid({ people }: PeopleGridProps) {
@@ -30,10 +30,10 @@ export default function PeopleGrid({ people }: PeopleGridProps) {
           <path d="M22 21v-2a4 4 0 0 0-3-3.87" />
           <path d="M16 3.13a4 4 0 0 1 0 7.75" />
         </svg>
-        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
           People to Watch
         </h3>
-        <span className="text-[10px] font-mono-data font-bold ml-auto" style={{ color: "var(--accent-blue-light)" }}>
+        <span className="text-xs font-mono-data font-bold ml-auto" style={{ color: "var(--accent-blue-light)" }}>
           {people.length}
         </span>
       </div>
@@ -50,7 +50,7 @@ export default function PeopleGrid({ people }: PeopleGridProps) {
                   className="w-2 h-2 rounded-full"
                   style={{ background: color, boxShadow: `0 0 6px ${color}40` }}
                 />
-                <span className="text-[10px] font-bold uppercase tracking-wider" style={{ color }}>
+                <span className="text-xs font-bold uppercase tracking-wider" style={{ color }}>
                   {priority}
                 </span>
                 <div className="separator flex-1" />
@@ -67,16 +67,16 @@ export default function PeopleGrid({ people }: PeopleGridProps) {
                     }}
                   >
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="text-xs font-bold" style={{ color: "var(--accent-blue-light)" }}>
+                      <span className="text-sm font-bold" style={{ color: "var(--accent-blue-light)" }}>
                         {person.handle}
                       </span>
                       {person.name && (
-                        <span className="text-[10px]" style={{ color: "var(--text-muted)" }}>
+                        <span className="text-xs" style={{ color: "var(--text-secondary)" }}>
                           {person.name}
                         </span>
                       )}
                     </div>
-                    <p className="text-[10px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+                    <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>
                       {person.why}
                     </p>
                   </div>

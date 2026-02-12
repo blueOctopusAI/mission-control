@@ -218,3 +218,158 @@ export interface Alert {
   message: string;
   severity: "warning" | "error";
 }
+
+// ============================================================
+// Job Search Pipeline (2026JobSearch/Pipeline/)
+// ============================================================
+
+export type CompanyTier = "HOT" | "WARM" | "WATCH" | "COLD";
+
+export interface Company {
+  id: string;
+  name: string;
+  industry: string;
+  location: string;
+  size: string;
+  whyFit: string;
+  contact: string;
+  careerPage: string;
+  source: string;
+  status: string;
+  resumeVariant: string;
+  lastTouched: string;
+  notes: string;
+  tier: CompanyTier;
+}
+
+export type OpportunityStatus =
+  | "discovered"
+  | "analyzing"
+  | "identified"
+  | "tailoring"
+  | "applied"
+  | "phone-screen"
+  | "technical"
+  | "final"
+  | "offer"
+  | "rejected"
+  | "ghosted"
+  | "withdrawn"
+  | "expired";
+
+export interface FitRow {
+  requirement: string;
+  level: string;
+  match: string;
+}
+
+export interface Opportunity {
+  id: string;
+  companyId: string;
+  company: string;
+  role: string;
+  location: string;
+  salary: string;
+  fit: string;
+  status: OpportunityStatus;
+  variant: string;
+  source: string;
+  applied: string;
+  overall: string;
+  fitAssessment: FitRow[];
+  materials: string[];
+  strategy: string;
+}
+
+export interface Touchpoint {
+  id: string;
+  date: string;
+  company: string;
+  contact: string;
+  channel: string;
+  action: string;
+  result: string;
+  nextStep: string;
+  due: string;
+}
+
+export interface Contact {
+  name: string;
+  company: string;
+  title: string;
+  channel: string;
+  notes: string;
+}
+
+export interface FollowUp {
+  txId: string;
+  company: string;
+  contact: string;
+  actionDue: string;
+  dueDate: string;
+  daysUntil: number;
+}
+
+export interface TrackerData {
+  touchpoints: Touchpoint[];
+  contacts: Contact[];
+  followUps: FollowUp[];
+}
+
+export interface ResultsStat {
+  metric: string;
+  count: string;
+}
+
+export interface IndustryResult {
+  industry: string;
+  applied: string;
+  responses: string;
+  interviews: string;
+  notes: string;
+}
+
+export interface VariantResult {
+  variant: string;
+  used: string;
+  responses: string;
+  notes: string;
+}
+
+export interface ChannelResult {
+  channel: string;
+  applied: string;
+  responses: string;
+  notes: string;
+}
+
+export interface Lesson {
+  date: string;
+  company: string;
+  points: string[];
+}
+
+export interface ResultsData {
+  stats: ResultsStat[];
+  byIndustry: IndustryResult[];
+  byVariant: VariantResult[];
+  byChannel: ChannelResult[];
+  lessons: Lesson[];
+}
+
+export interface DiscoveryEntry {
+  timestamp: string;
+  source: string;
+  query: string;
+  results: string;
+  newTCs: string;
+  newOPs: string;
+}
+
+export interface JobsPageData {
+  companies: Company[];
+  opportunities: Opportunity[];
+  tracker: TrackerData;
+  results: ResultsData;
+  discovery: DiscoveryEntry[];
+}

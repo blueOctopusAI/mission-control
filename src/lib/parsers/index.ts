@@ -6,3 +6,8 @@ export { parseBookmarks } from "./bookmarks";
 export { parsePeople } from "./people";
 export { parseTools } from "./tools";
 export { parseVideoPipeline } from "./video-pipeline";
+export { parseJobCompanies } from "./job-companies";
+export { parseJobOpportunities } from "./job-opportunities";
+export { parseJobTracker } from "./job-tracker";
+export { parseJobResults } from "./job-results";
+export { parseJobDiscovery } from "./job-discovery";

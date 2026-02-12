@@ -16,12 +16,12 @@ const PLATFORM_ICONS: Record<string, string> = {
 };
 
 const PLATFORM_COLORS: Record<string, string> = {
-  "Blue Octopus Blog": "#60a5fa",
+  "Blue Octopus Blog": "#7bb5ff",
   "Blue Octopus LinkedIn": "#38bdf8",
-  "Blue Octopus X": "#94a3b8",
-  "Blue Octopus YouTube": "#f87171",
-  "UtilitarianTechnology YouTube": "#fbbf24",
-  "OpenClaw Posts": "#2dd4bf",
+  "Blue Octopus X": "#cbd5e1",
+  "Blue Octopus YouTube": "#fb7185",
+  "UtilitarianTechnology YouTube": "#fcd34d",
+  "OpenClaw Posts": "#5eead4",
 };
 
 export default function ContentCard({ piece }: ContentCardProps) {
@@ -38,9 +38,9 @@ export default function ContentCard({ piece }: ContentCardProps) {
     >
       <div className="flex items-start justify-between gap-2 mb-1.5">
         <span
-          className="text-[9px] font-bold px-1.5 py-0.5 rounded-md"
+          className="text-[10px] font-bold px-1.5 py-0.5 rounded-md"
           style={{
-            background: `${platformColor}15`,
+            background: `${platformColor}20`,
             color: platformColor,
           }}
         >
@@ -48,7 +48,7 @@ export default function ContentCard({ piece }: ContentCardProps) {
         </span>
         {piece.priority && (
           <span
-            className={`text-[9px] font-bold ${
+            className={`text-[10px] font-bold ${
               piece.priority === "High"
                 ? "priority-high"
                 : piece.priority === "Medium"
@@ -60,11 +60,11 @@ export default function ContentCard({ piece }: ContentCardProps) {
           </span>
         )}
       </div>
-      <div className="text-[11px] font-medium leading-snug" style={{ color: "var(--text-primary)" }}>
+      <div className="text-sm font-medium leading-snug" style={{ color: "var(--text-primary)" }}>
         {piece.title}
       </div>
       {piece.due && (
-        <div className="text-[9px] mt-1.5 font-mono-data" style={{ color: "var(--text-muted)" }}>
+        <div className="text-xs mt-1.5 font-mono-data" style={{ color: "var(--text-muted)" }}>
           Due: {piece.due}
         </div>
       )}

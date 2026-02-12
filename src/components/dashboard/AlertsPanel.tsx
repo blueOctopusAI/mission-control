@@ -13,11 +13,11 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
             <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
             <polyline points="22 4 12 14.01 9 11.01" />
           </svg>
-          <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+          <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
             Alerts
           </h3>
         </div>
-        <p className="text-xs font-medium" style={{ color: "var(--status-healthy)" }}>
+        <p className="text-sm font-medium" style={{ color: "var(--status-healthy)" }}>
           All systems clear
         </p>
       </div>
@@ -32,35 +32,35 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
           <line x1="12" x2="12" y1="9" y2="13" />
           <line x1="12" x2="12.01" y1="17" y2="17" />
         </svg>
-        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
           Alerts
         </h3>
         <span
-          className="text-[10px] font-bold font-mono-data ml-auto px-1.5 py-0.5 rounded"
-          style={{ background: "rgba(248, 113, 113, 0.15)", color: "var(--status-blocked)" }}
+          className="text-xs font-bold font-mono-data ml-auto px-2 py-0.5 rounded"
+          style={{ background: "rgba(251, 113, 133, 0.18)", color: "var(--status-blocked)" }}
         >
           {alerts.length}
         </span>
       </div>
-      <div className="space-y-1.5">
+      <div className="space-y-2">
         {alerts.map((alert, i) => (
           <div
             key={i}
-            className="flex items-start gap-2.5 py-2 px-3 rounded-lg text-xs"
+            className="flex items-start gap-2.5 py-2.5 px-3.5 rounded-lg text-sm"
             style={{
               background:
                 alert.severity === "error"
-                  ? "rgba(248, 113, 113, 0.06)"
-                  : "rgba(251, 191, 36, 0.06)",
+                  ? "rgba(251, 113, 133, 0.08)"
+                  : "rgba(252, 211, 77, 0.08)",
               border: `1px solid ${
                 alert.severity === "error"
-                  ? "rgba(248, 113, 113, 0.1)"
-                  : "rgba(251, 191, 36, 0.1)"
+                  ? "rgba(251, 113, 133, 0.15)"
+                  : "rgba(252, 211, 77, 0.15)"
               }`,
             }}
           >
             <span
-              className="text-[9px] font-bold uppercase tracking-wider mt-0.5 flex-shrink-0"
+              className="text-[10px] font-bold uppercase tracking-wider mt-0.5 flex-shrink-0"
               style={{
                 color:
                   alert.severity === "error"
@@ -74,7 +74,7 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
               <span className="font-semibold" style={{ color: "var(--text-primary)" }}>
                 {alert.project}
               </span>
-              <span style={{ color: "var(--text-muted)" }}> — {alert.message}</span>
+              <span style={{ color: "var(--text-secondary)" }}> — {alert.message}</span>
             </div>
           </div>
         ))}

@@ -14,43 +14,43 @@ const METRIC_ITEMS: {
   {
     key: "linksProcessed",
     label: "Links Processed",
-    color: "#60a5fa",
-    gradient: "linear-gradient(135deg, rgba(37, 99, 235, 0.15), rgba(96, 165, 250, 0.05))",
+    color: "#7bb5ff",
+    gradient: "linear-gradient(135deg, rgba(59, 130, 246, 0.20), rgba(96, 165, 250, 0.08))",
     icon: "link",
   },
   {
     key: "contentInPipeline",
     label: "Content Pipeline",
-    color: "#2dd4bf",
-    gradient: "linear-gradient(135deg, rgba(45, 212, 191, 0.15), rgba(20, 184, 166, 0.05))",
+    color: "#5eead4",
+    gradient: "linear-gradient(135deg, rgba(94, 234, 212, 0.18), rgba(45, 212, 191, 0.06))",
     icon: "edit",
   },
   {
     key: "activeProjects",
     label: "Active Projects",
-    color: "#a78bfa",
-    gradient: "linear-gradient(135deg, rgba(167, 139, 250, 0.15), rgba(139, 92, 246, 0.05))",
+    color: "#c4b5fd",
+    gradient: "linear-gradient(135deg, rgba(196, 181, 253, 0.18), rgba(167, 139, 250, 0.06))",
     icon: "layers",
   },
   {
     key: "toolsEvaluated",
     label: "Tools Evaluated",
-    color: "#fbbf24",
-    gradient: "linear-gradient(135deg, rgba(251, 191, 36, 0.12), rgba(245, 158, 11, 0.04))",
+    color: "#fcd34d",
+    gradient: "linear-gradient(135deg, rgba(252, 211, 77, 0.16), rgba(251, 191, 36, 0.05))",
     icon: "tool",
   },
   {
     key: "peopleTracked",
     label: "People Tracked",
-    color: "#f472b6",
-    gradient: "linear-gradient(135deg, rgba(244, 114, 182, 0.12), rgba(236, 72, 153, 0.04))",
+    color: "#f9a8d4",
+    gradient: "linear-gradient(135deg, rgba(249, 168, 212, 0.16), rgba(244, 114, 182, 0.05))",
     icon: "users",
   },
   {
     key: "strategiesDocumented",
     label: "Strategy Docs",
-    color: "#34d399",
-    gradient: "linear-gradient(135deg, rgba(52, 211, 153, 0.12), rgba(16, 185, 129, 0.04))",
+    color: "#4ade80",
+    gradient: "linear-gradient(135deg, rgba(74, 222, 128, 0.16), rgba(52, 211, 153, 0.05))",
     icon: "doc",
   },
 ];
@@ -84,24 +84,24 @@ export default function MetricsRow({ metrics }: MetricsRowProps) {
           className="rounded-xl p-4 hover-lift"
           style={{
             background: item.gradient,
-            border: `1px solid ${item.color}15`,
+            border: `1px solid ${item.color}28`,
           }}
         >
           <div className="flex items-center gap-2 mb-2">
             <div
               className="w-7 h-7 rounded-lg flex items-center justify-center"
-              style={{ background: `${item.color}15` }}
+              style={{ background: `${item.color}20` }}
             >
               <MetricIcon icon={item.icon} color={item.color} />
             </div>
           </div>
           <div
-            className="text-2xl font-bold font-mono-data"
+            className="text-3xl font-bold font-mono-data"
             style={{ color: item.color }}
           >
             {metrics[item.key]}
           </div>
-          <div className="text-[10px] mt-0.5 font-medium" style={{ color: "var(--text-muted)" }}>
+          <div className="text-xs mt-0.5 font-semibold" style={{ color: "var(--text-secondary)" }}>
             {item.label}
           </div>
         </div>

@@ -46,19 +46,19 @@ export default function VideoPipelineWidget({ data }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0ea5e9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="23 7 16 12 23 17 23 7" />
             <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
           </svg>
-          <span className="text-xs font-semibold" style={{ color: "var(--text-primary)" }}>
+          <span className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
             Video Pipeline
           </span>
           <StatusDot active={hasActive} />
         </div>
         <Link
           href="/pipeline"
-          className="text-[10px] font-medium"
-          style={{ color: "#0ea5e9" }}
+          className="text-xs font-semibold"
+          style={{ color: "#38bdf8" }}
         >
           View All &rarr;
         </Link>
@@ -66,14 +66,14 @@ export default function VideoPipelineWidget({ data }: Props) {
 
       {/* Active jobs */}
       {hasActive ? (
-        <div className="space-y-2 mb-3">
+        <div className="space-y-2.5 mb-3">
           {data.activeJobs.slice(0, 3).map((job) => (
             <div key={job.id} className="space-y-1">
               <div className="flex items-center justify-between">
-                <span className="text-[10px] font-mono-data truncate max-w-[180px]" style={{ color: "var(--text-secondary)" }}>
+                <span className="text-xs font-mono-data truncate max-w-[200px]" style={{ color: "var(--text-secondary)" }}>
                   {job.source}
                 </span>
-                <span className="text-[10px] font-mono-data" style={{ color: "#0ea5e9" }}>
+                <span className="text-xs font-mono-data font-semibold" style={{ color: "#38bdf8" }}>
                   {job.progress}
                 </span>
               </div>
@@ -82,37 +82,37 @@ export default function VideoPipelineWidget({ data }: Props) {
           ))}
         </div>
       ) : (
-        <p className="text-[10px] mb-3" style={{ color: "var(--text-muted)" }}>
+        <p className="text-xs mb-3" style={{ color: "var(--text-muted)" }}>
           No active jobs
         </p>
       )}
 
       {/* Stats row */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-5">
         <div className="text-center">
-          <div className="text-sm font-bold font-mono-data" style={{ color: "#0ea5e9" }}>
+          <div className="text-lg font-bold font-mono-data" style={{ color: "#38bdf8" }}>
             {data.stats.total}
           </div>
-          <div className="text-[9px]" style={{ color: "var(--text-muted)" }}>Total</div>
+          <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Total</div>
         </div>
         <div className="text-center">
-          <div className="text-sm font-bold font-mono-data" style={{ color: "var(--status-healthy)" }}>
+          <div className="text-lg font-bold font-mono-data" style={{ color: "var(--status-healthy)" }}>
             {data.stats.completed}
           </div>
-          <div className="text-[9px]" style={{ color: "var(--text-muted)" }}>Done</div>
+          <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Done</div>
         </div>
         <div className="text-center">
-          <div className="text-sm font-bold font-mono-data" style={{ color: "#60a5fa" }}>
+          <div className="text-lg font-bold font-mono-data" style={{ color: "#7bb5ff" }}>
             {data.stats.active}
           </div>
-          <div className="text-[9px]" style={{ color: "var(--text-muted)" }}>Active</div>
+          <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Active</div>
         </div>
         {data.stats.failed > 0 && (
           <div className="text-center">
-            <div className="text-sm font-bold font-mono-data" style={{ color: "var(--status-blocked)" }}>
+            <div className="text-lg font-bold font-mono-data" style={{ color: "var(--status-blocked)" }}>
               {data.stats.failed}
             </div>
-            <div className="text-[9px]" style={{ color: "var(--text-muted)" }}>Failed</div>
+            <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Failed</div>
           </div>
         )}
       </div>

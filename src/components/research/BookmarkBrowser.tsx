@@ -33,10 +33,10 @@ export default function BookmarkBrowser({ bookmarks, categories }: BookmarkBrows
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z" />
         </svg>
-        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
           Bookmarks
         </h3>
-        <span className="text-[10px] font-mono-data font-bold ml-auto" style={{ color: "var(--accent-blue-light)" }}>
+        <span className="text-xs font-mono-data font-bold ml-auto" style={{ color: "var(--accent-blue-light)" }}>
           {filtered.length}
         </span>
       </div>
@@ -48,7 +48,7 @@ export default function BookmarkBrowser({ bookmarks, categories }: BookmarkBrows
           value={search}
           onChange={(e) => setSearch(e.target.value)}
           placeholder="Search bookmarks..."
-          className="w-full px-3 py-2.5 rounded-lg text-xs"
+          className="w-full px-3 py-2.5 rounded-lg text-sm"
           style={{
             background: "rgba(6, 9, 15, 0.6)",
             border: "1px solid var(--border-subtle)",
@@ -63,11 +63,11 @@ export default function BookmarkBrowser({ bookmarks, categories }: BookmarkBrows
           <button
             key={cat}
             onClick={() => setSelectedCategory(cat)}
-            className="px-2.5 py-1 rounded-md text-[10px] font-semibold transition-all"
+            className="px-2.5 py-1 rounded-md text-xs font-semibold transition-all"
             style={{
-              background: selectedCategory === cat ? "rgba(37, 99, 235, 0.15)" : "transparent",
+              background: selectedCategory === cat ? "rgba(59, 130, 246, 0.18)" : "transparent",
               color: selectedCategory === cat ? "var(--accent-blue-light)" : "var(--text-muted)",
-              border: `1px solid ${selectedCategory === cat ? "rgba(37, 99, 235, 0.2)" : "transparent"}`,
+              border: `1px solid ${selectedCategory === cat ? "rgba(59, 130, 246, 0.25)" : "transparent"}`,
             }}
           >
             {cat}
@@ -89,14 +89,14 @@ export default function BookmarkBrowser({ bookmarks, categories }: BookmarkBrows
               href={bookmark.url}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-[11px] font-semibold block transition-colors"
+              className="text-sm font-semibold block transition-colors"
               style={{ color: "var(--text-primary)" }}
               onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-blue-light)")}
               onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
             >
               {bookmark.title}
             </a>
-            <div className="text-[10px] mt-0.5" style={{ color: "var(--text-muted)" }}>
+            <div className="text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>
               {bookmark.author} &middot; {bookmark.date}
             </div>
             {bookmark.tags.length > 0 && (
@@ -104,11 +104,11 @@ export default function BookmarkBrowser({ bookmarks, categories }: BookmarkBrows
                 {bookmark.tags.slice(0, 5).map((tag) => (
                   <span
                     key={tag}
-                    className="text-[9px] px-1.5 py-0.5 rounded-md font-medium"
+                    className="text-[10px] px-2 py-0.5 rounded-md font-medium"
                     style={{
-                      background: "rgba(96, 165, 250, 0.08)",
-                      color: "var(--text-muted)",
-                      border: "1px solid rgba(96, 165, 250, 0.1)",
+                      background: "rgba(123, 181, 255, 0.10)",
+                      color: "var(--text-secondary)",
+                      border: "1px solid rgba(123, 181, 255, 0.15)",
                     }}
                   >
                     {tag}

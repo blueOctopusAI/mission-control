@@ -34,12 +34,12 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
       </div>
 
       {blocked.length > 0 && (
-        <div className="mb-4 p-3 rounded-lg" style={{ background: "rgba(248, 113, 113, 0.08)", border: "1px solid rgba(248, 113, 113, 0.15)" }}>
-          <div className="text-[10px] font-bold uppercase tracking-wider mb-1.5" style={{ color: "var(--status-blocked)" }}>
+        <div className="mb-4 p-3.5 rounded-lg" style={{ background: "rgba(251, 113, 133, 0.10)", border: "1px solid rgba(251, 113, 133, 0.20)" }}>
+          <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--status-blocked)" }}>
             Unblock First
           </div>
           {blocked.map((p) => (
-            <div key={p.name} className="text-xs leading-relaxed" style={{ color: "var(--text-primary)" }}>
+            <div key={p.name} className="text-sm leading-relaxed" style={{ color: "var(--text-primary)" }}>
               <span className="font-semibold">{p.name}:</span>{" "}
               <span style={{ color: "var(--text-secondary)" }}>{p.blockers}</span>
             </div>
@@ -48,14 +48,14 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
       )}
 
       {pending[0] && (
-        <div className="mb-4 p-3 rounded-lg" style={{ background: "rgba(45, 212, 191, 0.06)", border: "1px solid rgba(45, 212, 191, 0.1)" }}>
-          <div className="text-[10px] font-bold uppercase tracking-wider mb-1.5" style={{ color: "var(--accent-teal)" }}>
+        <div className="mb-4 p-3.5 rounded-lg" style={{ background: "rgba(94, 234, 212, 0.08)", border: "1px solid rgba(94, 234, 212, 0.15)" }}>
+          <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--accent-teal)" }}>
             Top Recommendation
           </div>
-          <div className="text-xs leading-relaxed" style={{ color: "var(--text-primary)" }}>
+          <div className="text-sm leading-relaxed" style={{ color: "var(--text-primary)" }}>
             {pending[0].suggestion}
           </div>
-          <div className="text-[10px] mt-1 font-mono-data" style={{ color: "var(--text-muted)" }}>
+          <div className="text-xs mt-1.5 font-mono-data" style={{ color: "var(--text-muted)" }}>
             Source: {pending[0].source}
           </div>
         </div>
@@ -63,14 +63,14 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
 
       {activeWithActions.length > 0 && (
         <div>
-          <div className="text-[10px] font-bold uppercase tracking-wider mb-2" style={{ color: "var(--text-muted)" }}>
+          <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--text-secondary)" }}>
             Next Actions
           </div>
-          <div className="space-y-1.5">
+          <div className="space-y-2">
             {activeWithActions.slice(0, 3).map((p) => (
-              <div key={p.name} className="flex items-start gap-2 text-xs">
+              <div key={p.name} className="flex items-start gap-2 text-sm">
                 <div
-                  className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
+                  className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
                   style={{ background: "var(--accent-blue-light)" }}
                 />
                 <div>
@@ -78,7 +78,7 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
                     {p.name}
                   </span>
                   <span style={{ color: "var(--text-muted)" }}> — </span>
-                  <span style={{ color: "var(--text-secondary)" }}>
+                  <span style={{ color: "var(--text-primary)" }}>
                     {p.nextActions[0]}
                   </span>
                 </div>

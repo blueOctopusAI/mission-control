@@ -17,6 +17,11 @@ const INTELLIGENCE_HUB_PATH =
   process.env.INTELLIGENCE_HUB_PATH ||
   path.resolve("/Users/jashanno/Developer/projects/intelligence-hub");
 
+const JOB_SEARCH_PIPELINE_PATH =
+  process.env.JOB_SEARCH_PATH
+    ? path.join(process.env.JOB_SEARCH_PATH, "Pipeline")
+    : path.resolve("/Users/jashanno/Developer/projects/2026JobSearch/Pipeline");
+
 const WS_PORT = 3001;
 
 // WebSocket server
@@ -43,8 +48,8 @@ function broadcast(data: object) {
   });
 }
 
-// File watcher
-const watcher = watch(INTELLIGENCE_HUB_PATH, {
+// File watchers
+const watcherOptions = {
   ignored: [
     /(^|[\/\\])\../, // dotfiles
     /node_modules/,
@@ -55,38 +60,60 @@ const watcher = watch(INTELLIGENCE_HUB_PATH, {
     stabilityThreshold: 500,
     pollInterval: 100,
   },
-});
+};
+
+const watcher = watch(INTELLIGENCE_HUB_PATH, watcherOptions);
+const jobWatcher = watch(JOB_SEARCH_PIPELINE_PATH, watcherOptions);
 
 let ready = false;
+let jobReady = false;
+
+function handleChange(basePath: string, label: string) {
+  return (filePath: string) => {
+    if (label === "hub" && !ready) return;
+    if (label === "jobs" && !jobReady) return;
+    if (!filePath.endsWith(".md")) return;
+
+    const relative = path.relative(basePath, filePath);
+    console.log(`Changed [${label}]: ${relative}`);
+    broadcast({ type: "file-change", file: relative, source: label, timestamp: Date.now() });
+  };
+}
+
+function handleAdd(basePath: string, label: string) {
+  return (filePath: string) => {
+    if (label === "hub" && !ready) return;
+    if (label === "jobs" && !jobReady) return;
+    if (!filePath.endsWith(".md")) return;
+
+    const relative = path.relative(basePath, filePath);
+    console.log(`Added [${label}]: ${relative}`);
+    broadcast({ type: "file-change", file: relative, source: label, timestamp: Date.now() });
+  };
+}
 
 watcher.on("ready", () => {
   ready = true;
   console.log(`Watching: ${INTELLIGENCE_HUB_PATH}`);
+});
+
+watcher.on("change", handleChange(INTELLIGENCE_HUB_PATH, "hub"));
+watcher.on("add", handleAdd(INTELLIGENCE_HUB_PATH, "hub"));
+
+jobWatcher.on("ready", () => {
+  jobReady = true;
+  console.log(`Watching: ${JOB_SEARCH_PIPELINE_PATH}`);
   console.log("Waiting for file changes...");
 });
 
-watcher.on("change", (filePath) => {
-  if (!ready) return;
-  if (!filePath.endsWith(".md")) return;
-
-  const relative = path.relative(INTELLIGENCE_HUB_PATH, filePath);
-  console.log(`Changed: ${relative}`);
-  broadcast({ type: "file-change", file: relative, timestamp: Date.now() });
-});
-
-watcher.on("add", (filePath) => {
-  if (!ready) return;
-  if (!filePath.endsWith(".md")) return;
-
-  const relative = path.relative(INTELLIGENCE_HUB_PATH, filePath);
-  console.log(`Added: ${relative}`);
-  broadcast({ type: "file-change", file: relative, timestamp: Date.now() });
-});
+jobWatcher.on("change", handleChange(JOB_SEARCH_PIPELINE_PATH, "jobs"));
+jobWatcher.on("add", handleAdd(JOB_SEARCH_PIPELINE_PATH, "jobs"));
 
 // Graceful shutdown
 process.on("SIGINT", () => {
   console.log("\nShutting down...");
   wss.close();
   watcher.close();
+  jobWatcher.close();
   process.exit(0);
 });

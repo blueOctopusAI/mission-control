@@ -41,6 +41,7 @@ export function parseContentPipeline(): ContentPipelineData {
   const lastUpdated = lastUpdatedMatch ? lastUpdatedMatch[1] : "";
 
   const pieces: ContentPiece[] = [];
+  const idCounts = new Map<string, number>();
   let currentPlatform: Platform = "Blue Octopus Blog";
 
   // Split by platform sections (## headings)
@@ -69,8 +70,14 @@ export function parseContentPipeline(): ContentPipelineData {
         ? (stageRaw as ContentStage)
         : "Idea";
 
+      // Generate unique ID by combining platform + title slug, with counter for true duplicates
+      const baseId = `${slugify(currentPlatform)}-${slugify(title)}`;
+      const count = idCounts.get(baseId) || 0;
+      idCounts.set(baseId, count + 1);
+      const id = count === 0 ? baseId : `${baseId}-${count}`;
+
       pieces.push({
-        id: slugify(title),
+        id,
         title,
         stage,
         priority: extractField(block, "Priority"),

@@ -73,13 +73,13 @@ export default function RecommendationCard({ rec }: RecommendationCardProps) {
         </button>
       </div>
       <div className="flex-1 min-w-0">
-        <div className="text-xs leading-relaxed" style={{ color: "var(--text-primary)" }}>
-          <span className="font-mono-data text-[10px] mr-2 font-bold" style={{ color: "var(--text-muted)" }}>
+        <div className="text-sm leading-relaxed" style={{ color: "var(--text-primary)" }}>
+          <span className="font-mono-data text-xs mr-2 font-bold" style={{ color: "var(--text-muted)" }}>
             #{rec.number}
           </span>
           {rec.suggestion}
         </div>
-        <div className="text-[10px] mt-1 font-mono-data" style={{ color: "var(--text-muted)" }}>
+        <div className="text-xs mt-1.5 font-mono-data" style={{ color: "var(--text-muted)" }}>
           {rec.source}
         </div>
       </div>

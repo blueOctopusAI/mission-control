@@ -19,11 +19,11 @@ export default function IntakeTimeline({ entries }: IntakeTimelineProps) {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
           </svg>
-          <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+          <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
             Intake Timeline
           </h3>
         </div>
-        <span className="text-[10px] font-mono-data font-bold" style={{ color: "var(--text-muted)" }}>
+        <span className="text-xs font-mono-data font-bold" style={{ color: "var(--text-muted)" }}>
           {entries.length} total
         </span>
       </div>
@@ -37,20 +37,20 @@ export default function IntakeTimeline({ entries }: IntakeTimelineProps) {
             <div key={i}>
               {showDate && (
                 <div
-                  className="text-[10px] font-bold mt-3 mb-1.5 font-mono-data uppercase tracking-wider"
-                  style={{ color: "var(--text-muted)" }}
+                  className="text-xs font-bold mt-3 mb-1.5 font-mono-data uppercase tracking-wider"
+                  style={{ color: "var(--text-secondary)" }}
                 >
                   {entry.date}
                 </div>
               )}
               <div
-                className="flex items-start gap-2.5 py-1.5 px-2 rounded-lg transition-colors"
+                className="flex items-start gap-2.5 py-2 px-2.5 rounded-lg transition-colors"
                 style={{ background: "transparent" }}
-                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(37, 99, 235, 0.04)")}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(59, 130, 246, 0.06)")}
                 onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
               >
                 <span
-                  className="w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0"
+                  className="w-2 h-2 rounded-full mt-1.5 flex-shrink-0"
                   style={{
                     background:
                       entry.status === "processed"
@@ -65,7 +65,7 @@ export default function IntakeTimeline({ entries }: IntakeTimelineProps) {
                     href={entry.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[11px] block truncate transition-colors"
+                    className="text-sm block truncate transition-colors"
                     style={{ color: "var(--text-primary)" }}
                     onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-blue-light)")}
                     onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
@@ -73,7 +73,7 @@ export default function IntakeTimeline({ entries }: IntakeTimelineProps) {
                     {entry.title}
                   </a>
                   <span
-                    className="text-[9px] font-mono-data"
+                    className="text-xs font-mono-data"
                     style={{ color: "var(--text-muted)" }}
                   >
                     {entry.timestamp}
@@ -88,11 +88,11 @@ export default function IntakeTimeline({ entries }: IntakeTimelineProps) {
       {limit < entries.length && (
         <button
           onClick={() => setLimit((l) => l + 20)}
-          className="mt-3 text-[11px] font-semibold w-full py-2.5 rounded-lg transition-all"
+          className="mt-3 text-sm font-semibold w-full py-2.5 rounded-lg transition-all"
           style={{
-            background: "rgba(37, 99, 235, 0.08)",
+            background: "rgba(59, 130, 246, 0.10)",
             color: "var(--accent-blue-light)",
-            border: "1px solid rgba(37, 99, 235, 0.15)",
+            border: "1px solid rgba(59, 130, 246, 0.20)",
           }}
         >
           Load more ({entries.length - limit} remaining)

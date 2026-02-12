@@ -30,10 +30,10 @@ export default function ActivityFeed({ entries }: ActivityFeedProps) {
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
           <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
         </svg>
-        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
+        <h3 className="text-xs font-bold uppercase tracking-wider" style={{ color: "var(--text-secondary)" }}>
           Recent Activity
         </h3>
-        <span className="text-[10px] font-mono-data ml-auto" style={{ color: "var(--text-muted)" }}>
+        <span className="text-xs font-mono-data font-semibold ml-auto" style={{ color: "var(--text-muted)" }}>
           {entries.length} total
         </span>
       </div>
@@ -41,9 +41,9 @@ export default function ActivityFeed({ entries }: ActivityFeedProps) {
         {recent.map((entry, i) => (
           <div
             key={i}
-            className="flex items-start gap-2.5 py-1.5 px-2 rounded-lg transition-colors"
+            className="flex items-start gap-2.5 py-2 px-2.5 rounded-lg transition-colors"
             style={{ background: "transparent" }}
-            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(37, 99, 235, 0.04)")}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(59, 130, 246, 0.06)")}
             onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
             <StatusDot status={entry.status} />
@@ -52,14 +52,14 @@ export default function ActivityFeed({ entries }: ActivityFeedProps) {
                 href={entry.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] block truncate transition-colors"
+                className="text-sm block truncate transition-colors"
                 style={{ color: "var(--text-primary)" }}
                 onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent-blue-light)")}
                 onMouseLeave={(e) => (e.currentTarget.style.color = "var(--text-primary)")}
               >
                 {entry.title}
               </a>
-              <span className="text-[10px] font-mono-data" style={{ color: "var(--text-muted)" }}>
+              <span className="text-xs font-mono-data" style={{ color: "var(--text-muted)" }}>
                 {entry.timestamp}
               </span>
             </div>

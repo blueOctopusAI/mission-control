@@ -8,12 +8,12 @@ interface ProjectCardProps {
 }
 
 const TIER_COLORS: Record<string, string> = {
-  ACTIVE: "#60a5fa",
-  READY: "#2dd4bf",
-  INCUBATING: "#a78bfa",
+  ACTIVE: "#7bb5ff",
+  READY: "#5eead4",
+  INCUBATING: "#c4b5fd",
   SUPPORTING: "#94a3b8",
-  DORMANT: "#475569",
-  PORTFOLIO: "#334155",
+  DORMANT: "#64748b",
+  PORTFOLIO: "#475569",
 };
 
 function getMomentum(project: Project): { label: string; color: string } {
@@ -59,7 +59,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
             className="w-2 h-2 rounded-full"
             style={{ background: momentum.color, boxShadow: `0 0 6px ${momentum.color}60` }}
           />
-          <span className="text-[10px] font-medium" style={{ color: momentum.color }}>
+          <span className="text-xs font-semibold" style={{ color: momentum.color }}>
             {momentum.label}
           </span>
         </div>
@@ -74,11 +74,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.stack.split(",").map((tech) => (
             <span
               key={tech}
-              className="text-[10px] px-2 py-0.5 rounded-md font-medium"
+              className="text-xs px-2 py-0.5 rounded-md font-medium"
               style={{
-                background: `${tierColor}10`,
-                color: "var(--text-muted)",
-                border: `1px solid ${tierColor}15`,
+                background: `${tierColor}18`,
+                color: "var(--text-secondary)",
+                border: `1px solid ${tierColor}25`,
               }}
             >
               {tech.trim()}
@@ -89,11 +89,11 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
       {project.blockers && project.blockers !== "None" && (
         <div
-          className="text-[10px] px-2.5 py-1.5 rounded-lg mb-2 font-medium"
+          className="text-xs px-3 py-2 rounded-lg mb-2 font-medium"
           style={{
-            background: "rgba(248, 113, 113, 0.08)",
+            background: "rgba(251, 113, 133, 0.10)",
             color: "var(--status-blocked)",
-            border: "1px solid rgba(248, 113, 113, 0.15)",
+            border: "1px solid rgba(251, 113, 133, 0.20)",
           }}
         >
           Blocker: {project.blockers}
@@ -142,7 +142,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               </ul>
             </div>
           )}
-          <div className="font-mono-data text-[10px] pt-1" style={{ color: "var(--text-muted)" }}>
+          <div className="font-mono-data text-xs pt-1" style={{ color: "var(--text-muted)" }}>
             Last touched: {project.lastTouched}
           </div>
         </div>

@@ -61,7 +61,7 @@ Next.js 16 dashboard for Blue Octopus Technology's intelligence hub. Reads markd
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `INTELLIGENCE_HUB_PATH` | `/Users/jashanno/Developer/projects/intelligence-hub` | Path to data directory |
+| `INTELLIGENCE_HUB_PATH` | `../intelligence-hub` (resolved relative to project root) | Path to data directory |
 
 ## Commands
 

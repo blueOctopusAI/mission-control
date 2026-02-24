@@ -1,6 +1,6 @@
 # Mission Control
 
-Localhost dashboard for [Blue Octopus Technology](https://blueoctopus.tech)'s intelligence hub. Visualizes project portfolio, content pipeline, research intelligence, and tool evaluations — all powered by markdown files as the database.
+Localhost dashboard for [Blue Octopus Technology](https://www.blueoctopustechnology.com)'s intelligence hub. Visualizes project portfolio, content pipeline, research intelligence, and tool evaluations — all powered by markdown files as the database.
 
 ## Quick Start
 

@@ -220,7 +220,7 @@ export interface Alert {
 }
 
 // ============================================================
-// Job Search Pipeline (2026JobSearch/Pipeline/)
+// Job Search Pipeline
 // ============================================================
 
 export type CompanyTier = "HOT" | "WARM" | "WATCH" | "COLD";

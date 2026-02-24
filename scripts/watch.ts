@@ -15,12 +15,12 @@ import path from "path";
 
 const INTELLIGENCE_HUB_PATH =
   process.env.INTELLIGENCE_HUB_PATH ||
-  path.resolve("/Users/jashanno/Developer/projects/intelligence-hub");
+  path.resolve(__dirname, "..", "..", "intelligence-hub");
 
 const JOB_SEARCH_PIPELINE_PATH =
   process.env.JOB_SEARCH_PATH
     ? path.join(process.env.JOB_SEARCH_PATH, "Pipeline")
-    : path.resolve("/Users/jashanno/Developer/projects/2026JobSearch/Pipeline");
+    : path.resolve(__dirname, "..", "..", "2026JobSearch", "Pipeline");
 
 const WS_PORT = 3001;
 

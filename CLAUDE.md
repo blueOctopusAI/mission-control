@@ -2,7 +2,7 @@
 
 ## What This Is
 
-A localhost-only Next.js dashboard for Blue Octopus Technology's intelligence hub. Reads markdown files from `/Users/jashanno/Developer/projects/intelligence-hub` and provides interactive project management, content pipeline tracking, and research visualization.
+A localhost-only Next.js dashboard for Blue Octopus Technology's intelligence hub. Reads markdown files from the sibling `../intelligence-hub` directory and provides interactive project management, content pipeline tracking, and research visualization.
 
 **No database. No cloud. No auth.** Markdown files are the database. Localhost only.
 

@@ -22,16 +22,16 @@ export default function JobsMetricsRow({ stats, companies, opportunities, follow
   const overdueFollowUps = followUps.filter((f) => f.daysUntil < 0);
 
   const metrics = [
-    { label: "Applications", value: getStat("Total applications"), color: "#0ea5e9" },
-    { label: "Response Rate", value: getStat("Response rate"), color: "#2dd4bf" },
-    { label: "Active Pipeline", value: String(activeOps.length), color: "#60a5fa" },
-    { label: "Screens / Interviews", value: String(screens.length), color: "#a78bfa" },
+    { label: "Applications", value: getStat("Total applications"), color: "#0284c7" },
+    { label: "Response Rate", value: getStat("Response rate"), color: "#0d9488" },
+    { label: "Active Pipeline", value: String(activeOps.length), color: "#2563eb" },
+    { label: "Screens / Interviews", value: String(screens.length), color: "#7c3aed" },
     {
       label: "Follow-Ups Due",
       value: String(followUps.length),
-      color: overdueFollowUps.length > 0 ? "#f87171" : "#fbbf24",
+      color: overdueFollowUps.length > 0 ? "#dc2626" : "#d97706",
     },
-    { label: "Companies Tracked", value: String(companies.length), color: "#34d399" },
+    { label: "Companies Tracked", value: String(companies.length), color: "#16a34a" },
   ];
 
   return (

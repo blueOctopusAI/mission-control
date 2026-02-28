@@ -2,11 +2,11 @@ import path from "path";
 
 export const INTELLIGENCE_HUB_PATH =
   process.env.INTELLIGENCE_HUB_PATH ||
-  path.resolve(__dirname, "..", "..", "..", "..", "intelligence-hub");
+  path.resolve(process.cwd(), "..", "intelligence-hub");
 
 export const JOB_SEARCH_PATH =
   process.env.JOB_SEARCH_PATH ||
-  path.resolve(__dirname, "..", "..", "..", "..", "2026JobSearch");
+  path.resolve(process.cwd(), "..", "2026JobSearch");
 
 export const FILES = {
   projects: path.join(INTELLIGENCE_HUB_PATH, "portfolio", "projects.md"),
@@ -27,4 +27,4 @@ export const FILES = {
   jobDiscovery: path.join(JOB_SEARCH_PATH, "Pipeline", "discovery-log.md"),
 } as const;
 
-export const WS_PORT = 3001;
+export const WS_PORT = 3002;

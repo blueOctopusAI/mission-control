@@ -5,10 +5,10 @@ interface PeopleGridProps {
 }
 
 const PRIORITY_COLORS: Record<string, string> = {
-  HIGH: "#fb7185",
-  "MEDIUM-HIGH": "#fcd34d",
-  MEDIUM: "#7bb5ff",
-  LOW: "#64748b",
+  HIGH: "#dc2626",
+  "MEDIUM-HIGH": "#d97706",
+  MEDIUM: "#2563eb",
+  LOW: "#475569",
 };
 
 export default function PeopleGrid({ people }: PeopleGridProps) {

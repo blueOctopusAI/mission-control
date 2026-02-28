@@ -8,33 +8,33 @@ interface CompanyGridProps {
 }
 
 const TIER_COLORS: Record<CompanyTier, { bg: string; text: string; border: string }> = {
-  HOT: { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", border: "rgba(248, 113, 113, 0.3)" },
-  WARM: { bg: "rgba(251, 191, 36, 0.12)", text: "#fbbf24", border: "rgba(251, 191, 36, 0.3)" },
-  WATCH: { bg: "rgba(96, 165, 250, 0.10)", text: "#60a5fa", border: "rgba(96, 165, 250, 0.25)" },
-  COLD: { bg: "rgba(71, 85, 105, 0.12)", text: "#64748b", border: "rgba(71, 85, 105, 0.3)" },
+  HOT: { bg: "rgba(220, 38, 38, 0.08)", text: "#dc2626", border: "rgba(220, 38, 38, 0.2)" },
+  WARM: { bg: "rgba(217, 119, 6, 0.08)", text: "#d97706", border: "rgba(217, 119, 6, 0.2)" },
+  WATCH: { bg: "rgba(37, 99, 235, 0.06)", text: "#2563eb", border: "rgba(37, 99, 235, 0.15)" },
+  COLD: { bg: "rgba(71, 85, 105, 0.06)", text: "#475569", border: "rgba(71, 85, 105, 0.15)" },
 };
 
 const STATUS_DOT: Record<string, string> = {
-  "phone-screen": "#2dd4bf",
-  applied: "#38bdf8",
-  tailoring: "#fbbf24",
-  identified: "#60a5fa",
-  watching: "#94a3b8",
-  rejected: "#f87171",
+  "phone-screen": "#0d9488",
+  applied: "#0284c7",
+  tailoring: "#d97706",
+  identified: "#2563eb",
+  watching: "#64748b",
+  rejected: "#dc2626",
 };
 
 function CompanyCard({ company }: { company: Company }) {
   const [expanded, setExpanded] = useState(false);
   const tier = TIER_COLORS[company.tier];
-  const statusColor = STATUS_DOT[company.status] || "#94a3b8";
+  const statusColor = STATUS_DOT[company.status] || "#64748b";
 
   return (
     <div
       className="rounded-xl p-4 cursor-pointer transition-all"
       onClick={() => setExpanded(!expanded)}
       style={{
-        background: "rgba(30, 41, 59, 0.6)",
-        border: `1px solid rgba(51, 65, 85, 0.7)`,
+        background: "var(--bg-card)",
+        border: `1px solid var(--border-primary)`,
         borderTop: `3px solid ${tier.text}`,
       }}
     >
@@ -65,7 +65,7 @@ function CompanyCard({ company }: { company: Company }) {
       </div>
 
       {expanded && (
-        <div className="mt-3 pt-3 space-y-2 text-sm" style={{ borderTop: "1px solid rgba(51, 65, 85, 0.7)" }}>
+        <div className="mt-3 pt-3 space-y-2 text-sm" style={{ borderTop: "1px solid var(--border-primary)" }}>
           <p style={{ color: "var(--text-primary)" }}>{company.whyFit}</p>
           {company.contact && company.contact !== "—" && (
             <div className="flex gap-2">
@@ -94,9 +94,9 @@ function CompanyCard({ company }: { company: Company }) {
 }
 
 function CompactRow({ company }: { company: Company }) {
-  const statusColor = STATUS_DOT[company.status] || "#94a3b8";
+  const statusColor = STATUS_DOT[company.status] || "#64748b";
   return (
-    <tr className="border-b" style={{ borderColor: "rgba(51, 65, 85, 0.5)" }}>
+    <tr className="border-b" style={{ borderColor: "var(--border-subtle)" }}>
       <td className="py-2 px-3 text-xs font-mono-data font-semibold" style={{ color: "var(--text-muted)" }}>
         {company.id}
       </td>
@@ -156,10 +156,10 @@ export default function CompanyGrid({ companies }: CompanyGridProps) {
                 ))}
               </div>
             ) : (
-              <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(51, 65, 85, 0.7)" }}>
+              <div className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--border-primary)" }}>
                 <table className="w-full text-left">
                   <thead>
-                    <tr style={{ background: "rgba(30, 41, 59, 0.8)" }}>
+                    <tr style={{ background: "var(--bg-secondary)" }}>
                       <th className="py-2 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>ID</th>
                       <th className="py-2 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Company</th>
                       <th className="py-2 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Industry</th>

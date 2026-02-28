@@ -22,6 +22,7 @@ export interface Project {
   lane: string;
   synergies: string;
   blockers: string;
+  isBlocked: boolean;
   nextActions: string[];
   lastTouched: string;
   tier: Tier;

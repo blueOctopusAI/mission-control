@@ -33,7 +33,7 @@ function extractNextActions(block: string): string[] {
       continue;
     }
     if (inActions) {
-      const actionMatch = line.match(/^\s+-\s+\[[ x]\]\s+(.+)$/);
+      const actionMatch = line.match(/^\s+-\s+\[ \]\s+(.+)$/);
       if (actionMatch) {
         actions.push(actionMatch[1]);
       } else if (line.match(/^- \*\*/)) {
@@ -44,8 +44,20 @@ function extractNextActions(block: string): string[] {
   return actions;
 }
 
+function isActuallyBlocked(blockers: string): boolean {
+  if (!blockers) return false;
+  const normalized = blockers.toLowerCase().trim();
+  if (normalized === "none") return false;
+  if (normalized.startsWith("none ")) return false;
+  if (normalized.startsWith("none—") || normalized.startsWith("none —")) return false;
+  if (normalized.startsWith("none.")) return false;
+  if (normalized === "n/a" || normalized === "") return false;
+  return true;
+}
+
 function parseProject(block: string, tier: Tier): Project {
   const nameMatch = block.match(/^### (.+)$/m);
+  const blockers = extractField(block, "Blockers");
   return {
     name: nameMatch ? nameMatch[1].trim() : "Unknown",
     what: extractField(block, "What"),
@@ -55,7 +67,8 @@ function parseProject(block: string, tier: Tier): Project {
     status: extractField(block, "Status"),
     lane: extractField(block, "Lane"),
     synergies: extractField(block, "Synergies"),
-    blockers: extractField(block, "Blockers"),
+    blockers,
+    isBlocked: isActuallyBlocked(blockers),
     nextActions: extractNextActions(block),
     lastTouched: extractField(block, "Last touched"),
     tier,

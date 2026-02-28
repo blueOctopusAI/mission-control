@@ -17,15 +17,15 @@ const STAGE_ORDER = [
 ];
 
 const STAGE_COLORS: Record<string, string> = {
-  discovered: "#94a3b8",
-  analyzing: "#a78bfa",
-  identified: "#60a5fa",
-  tailoring: "#fbbf24",
-  applied: "#38bdf8",
-  "phone-screen": "#2dd4bf",
-  technical: "#34d399",
-  final: "#34d399",
-  offer: "#10b981",
+  discovered: "#64748b",
+  analyzing: "#7c3aed",
+  identified: "#2563eb",
+  tailoring: "#d97706",
+  applied: "#0284c7",
+  "phone-screen": "#0d9488",
+  technical: "#059669",
+  final: "#059669",
+  offer: "#047857",
 };
 
 export default function PipelineSummary({ opportunities }: PipelineSummaryProps) {

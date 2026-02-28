@@ -20,7 +20,7 @@ function StatusDot({ active }: { active: boolean }) {
 function ProgressBar({ progress }: { progress: string }) {
   const pct = parseInt(progress) || 0;
   return (
-    <div className="w-full h-1.5 rounded-full" style={{ background: "rgba(255,255,255,0.06)" }}>
+    <div className="w-full h-1.5 rounded-full" style={{ background: "rgba(0,0,0,0.06)" }}>
       <div
         className="h-full rounded-full transition-all"
         style={{
@@ -46,7 +46,7 @@ export default function VideoPipelineWidget({ data }: Props) {
       {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#38bdf8" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284c7" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
             <polygon points="23 7 16 12 23 17 23 7" />
             <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
           </svg>
@@ -58,7 +58,7 @@ export default function VideoPipelineWidget({ data }: Props) {
         <Link
           href="/pipeline"
           className="text-xs font-semibold"
-          style={{ color: "#38bdf8" }}
+          style={{ color: "#0284c7" }}
         >
           View All &rarr;
         </Link>
@@ -73,7 +73,7 @@ export default function VideoPipelineWidget({ data }: Props) {
                 <span className="text-xs font-mono-data truncate max-w-[200px]" style={{ color: "var(--text-secondary)" }}>
                   {job.source}
                 </span>
-                <span className="text-xs font-mono-data font-semibold" style={{ color: "#38bdf8" }}>
+                <span className="text-xs font-mono-data font-semibold" style={{ color: "#0284c7" }}>
                   {job.progress}
                 </span>
               </div>
@@ -90,7 +90,7 @@ export default function VideoPipelineWidget({ data }: Props) {
       {/* Stats row */}
       <div className="flex items-center gap-5">
         <div className="text-center">
-          <div className="text-lg font-bold font-mono-data" style={{ color: "#38bdf8" }}>
+          <div className="text-lg font-bold font-mono-data" style={{ color: "#0284c7" }}>
             {data.stats.total}
           </div>
           <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Total</div>
@@ -102,7 +102,7 @@ export default function VideoPipelineWidget({ data }: Props) {
           <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Done</div>
         </div>
         <div className="text-center">
-          <div className="text-lg font-bold font-mono-data" style={{ color: "#7bb5ff" }}>
+          <div className="text-lg font-bold font-mono-data" style={{ color: "#2563eb" }}>
             {data.stats.active}
           </div>
           <div className="text-xs font-semibold" style={{ color: "var(--text-secondary)" }}>Active</div>

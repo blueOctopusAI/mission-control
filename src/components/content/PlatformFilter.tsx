@@ -4,12 +4,12 @@ import type { Platform } from "@/lib/types";
 
 const PLATFORMS: { label: string; value: Platform | "all"; color?: string }[] = [
   { label: "All", value: "all" },
-  { label: "Blog", value: "Blue Octopus Blog", color: "#60a5fa" },
-  { label: "LinkedIn", value: "Blue Octopus LinkedIn", color: "#38bdf8" },
-  { label: "X", value: "Blue Octopus X", color: "#94a3b8" },
-  { label: "YouTube", value: "Blue Octopus YouTube", color: "#f87171" },
-  { label: "UtilTech", value: "UtilitarianTechnology YouTube", color: "#fbbf24" },
-  { label: "OpenClaw", value: "OpenClaw Posts", color: "#2dd4bf" },
+  { label: "Blog", value: "Blue Octopus Blog", color: "#2563eb" },
+  { label: "LinkedIn", value: "Blue Octopus LinkedIn", color: "#0284c7" },
+  { label: "X", value: "Blue Octopus X", color: "#64748b" },
+  { label: "YouTube", value: "Blue Octopus YouTube", color: "#dc2626" },
+  { label: "UtilTech", value: "UtilitarianTechnology YouTube", color: "#d97706" },
+  { label: "OpenClaw", value: "OpenClaw Posts", color: "#0d9488" },
 ];
 
 interface PlatformFilterProps {

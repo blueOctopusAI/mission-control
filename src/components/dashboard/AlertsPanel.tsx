@@ -37,7 +37,7 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
         </h3>
         <span
           className="text-xs font-bold font-mono-data ml-auto px-2 py-0.5 rounded"
-          style={{ background: "rgba(251, 113, 133, 0.18)", color: "var(--status-blocked)" }}
+          style={{ background: "rgba(225, 29, 72, 0.12)", color: "var(--status-blocked)" }}
         >
           {alerts.length}
         </span>
@@ -50,12 +50,12 @@ export default function AlertsPanel({ alerts }: AlertsPanelProps) {
             style={{
               background:
                 alert.severity === "error"
-                  ? "rgba(251, 113, 133, 0.08)"
-                  : "rgba(252, 211, 77, 0.08)",
+                  ? "rgba(225, 29, 72, 0.05)"
+                  : "rgba(202, 138, 4, 0.06)",
               border: `1px solid ${
                 alert.severity === "error"
-                  ? "rgba(251, 113, 133, 0.15)"
-                  : "rgba(252, 211, 77, 0.15)"
+                  ? "rgba(225, 29, 72, 0.12)"
+                  : "rgba(202, 138, 4, 0.12)"
               }`,
             }}
           >

@@ -10,9 +10,7 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
     .filter((r) => r.status === "pending")
     .sort((a, b) => b.votes - a.votes);
 
-  const blocked = projects.filter(
-    (p) => p.blockers && p.blockers !== "None"
-  );
+  const blocked = projects.filter((p) => p.isBlocked);
 
   const activeWithActions = projects.filter(
     (p) => p.tier === "ACTIVE" && p.nextActions.length > 0
@@ -34,7 +32,7 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
       </div>
 
       {blocked.length > 0 && (
-        <div className="mb-4 p-3.5 rounded-lg" style={{ background: "rgba(251, 113, 133, 0.10)", border: "1px solid rgba(251, 113, 133, 0.20)" }}>
+        <div className="mb-4 p-3.5 rounded-lg" style={{ background: "rgba(225, 29, 72, 0.06)", border: "1px solid rgba(225, 29, 72, 0.15)" }}>
           <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--status-blocked)" }}>
             Unblock First
           </div>
@@ -48,7 +46,7 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
       )}
 
       {pending[0] && (
-        <div className="mb-4 p-3.5 rounded-lg" style={{ background: "rgba(94, 234, 212, 0.08)", border: "1px solid rgba(94, 234, 212, 0.15)" }}>
+        <div className="mb-4 p-3.5 rounded-lg" style={{ background: "rgba(13, 148, 136, 0.06)", border: "1px solid rgba(13, 148, 136, 0.15)" }}>
           <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--accent-teal)" }}>
             Top Recommendation
           </div>

@@ -5,13 +5,14 @@ interface FollowUpQueueProps {
 }
 
 function getUrgencyColor(daysUntil: number): { bg: string; text: string; dot: string; border: string } {
-  if (daysUntil < 0) return { bg: "rgba(248, 113, 113, 0.12)", text: "#f87171", dot: "#f87171", border: "rgba(248, 113, 113, 0.3)" };
-  if (daysUntil <= 1) return { bg: "rgba(251, 191, 36, 0.12)", text: "#fbbf24", dot: "#fbbf24", border: "rgba(251, 191, 36, 0.3)" };
-  if (daysUntil <= 3) return { bg: "rgba(96, 165, 250, 0.10)", text: "#60a5fa", dot: "#60a5fa", border: "rgba(96, 165, 250, 0.25)" };
-  return { bg: "rgba(52, 211, 153, 0.10)", text: "#34d399", dot: "#34d399", border: "rgba(52, 211, 153, 0.25)" };
+  if (daysUntil < 0) return { bg: "rgba(220, 38, 38, 0.08)", text: "#dc2626", dot: "#dc2626", border: "rgba(220, 38, 38, 0.2)" };
+  if (daysUntil <= 1) return { bg: "rgba(217, 119, 6, 0.08)", text: "#d97706", dot: "#d97706", border: "rgba(217, 119, 6, 0.2)" };
+  if (daysUntil <= 3) return { bg: "rgba(37, 99, 235, 0.06)", text: "#2563eb", dot: "#2563eb", border: "rgba(37, 99, 235, 0.15)" };
+  return { bg: "rgba(5, 150, 105, 0.06)", text: "#059669", dot: "#059669", border: "rgba(5, 150, 105, 0.15)" };
 }
 
 function getUrgencyLabel(daysUntil: number): string {
+  if (daysUntil >= 999) return "Waiting";
   if (daysUntil < -1) return `${Math.abs(daysUntil)} days overdue`;
   if (daysUntil === -1) return "1 day overdue";
   if (daysUntil === 0) return "Due today";
@@ -27,7 +28,7 @@ export default function FollowUpQueue({ followUps }: FollowUpQueueProps) {
     return (
       <div
         className="rounded-xl p-5"
-        style={{ background: "rgba(30, 41, 59, 0.5)", border: "1px solid rgba(51, 65, 85, 0.6)" }}
+        style={{ background: "var(--bg-card)", border: "1px solid var(--border-primary)" }}
       >
         <p className="text-sm" style={{ color: "var(--text-secondary)" }}>No follow-ups due</p>
       </div>

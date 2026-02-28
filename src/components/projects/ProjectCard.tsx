@@ -8,16 +8,16 @@ interface ProjectCardProps {
 }
 
 const TIER_COLORS: Record<string, string> = {
-  ACTIVE: "#7bb5ff",
-  READY: "#5eead4",
-  INCUBATING: "#c4b5fd",
-  SUPPORTING: "#94a3b8",
-  DORMANT: "#64748b",
-  PORTFOLIO: "#475569",
+  ACTIVE: "#2563eb",
+  READY: "#0d9488",
+  INCUBATING: "#7c3aed",
+  SUPPORTING: "#64748b",
+  DORMANT: "#94a3b8",
+  PORTFOLIO: "#cbd5e1",
 };
 
 function getMomentum(project: Project): { label: string; color: string } {
-  if (project.blockers && project.blockers !== "None") {
+  if (project.isBlocked) {
     return { label: "Blocked", color: "var(--status-blocked)" };
   }
   const lastDate = new Date(project.lastTouched);
@@ -42,7 +42,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         background: "var(--bg-card)",
         border: `1px solid var(--border-subtle)`,
         borderTop: `2px solid ${tierColor}`,
-        backdropFilter: "blur(12px)",
+        backdropFilter: "blur(4px)",
       }}
     >
       <div className="flex items-start justify-between mb-2">
@@ -87,7 +87,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
         </div>
       )}
 
-      {project.blockers && project.blockers !== "None" && (
+      {project.isBlocked && (
         <div
           className="text-xs px-3 py-2 rounded-lg mb-2 font-medium"
           style={{

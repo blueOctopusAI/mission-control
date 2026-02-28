@@ -34,7 +34,7 @@ function computeMetrics(): DashboardMetrics {
   ).length;
 
   return {
-    linksProcessed: log.entries.length,
+    linksProcessed: log.entries.filter((e) => e.status !== "pending").length,
     contentInPipeline: inPipeline,
     activeProjects,
     daysSinceLastBlogPost: 0,
@@ -67,7 +67,7 @@ function computeAlerts(): Alert[] {
       }
     }
 
-    if (project.blockers && project.blockers !== "None") {
+    if (project.isBlocked) {
       alerts.push({
         type: "blocker",
         project: project.name,
@@ -83,23 +83,23 @@ function computeAlerts(): Alert[] {
 }
 
 const TIER_COLORS: Record<string, string> = {
-  ACTIVE: "#7bb5ff",
-  READY: "#5eead4",
-  INCUBATING: "#c4b5fd",
-  SUPPORTING: "#94a3b8",
-  DORMANT: "#64748b",
-  PORTFOLIO: "#475569",
+  ACTIVE: "#2563eb",
+  READY: "#0d9488",
+  INCUBATING: "#7c3aed",
+  SUPPORTING: "#64748b",
+  DORMANT: "#94a3b8",
+  PORTFOLIO: "#cbd5e1",
 };
 
 function ProjectMiniCard({ project }: { project: Project }) {
   const color = TIER_COLORS[project.tier] || "#60a5fa";
-  const hasBlocker = project.blockers && project.blockers !== "None";
+  const hasBlocker = project.isBlocked;
 
   return (
     <div
       className="rounded-lg p-3.5 transition-all hover-lift"
       style={{
-        background: `linear-gradient(135deg, ${color}12, ${color}06)`,
+        background: `linear-gradient(135deg, ${color}18, ${color}0a)`,
         border: `1px solid ${color}30`,
       }}
     >
@@ -186,9 +186,11 @@ export default function DashboardPage() {
               <div className="separator flex-1" />
             </div>
             <div className="space-y-2">
-              {projectsData.recommendations.map((rec) => (
-                <RecommendationCard key={rec.number} rec={rec} />
-              ))}
+              {projectsData.recommendations
+                .filter((rec) => rec.status === "pending" || rec.status === "idea")
+                .map((rec) => (
+                  <RecommendationCard key={rec.number} rec={rec} />
+                ))}
             </div>
           </div>
           <div>

@@ -20,8 +20,8 @@ export default function DiscoveryTimeline({ entries }: DiscoveryTimelineProps) {
           key={i}
           className="rounded-xl px-5 py-4 flex items-start gap-4"
           style={{
-            background: "rgba(30, 41, 59, 0.6)",
-            border: "1px solid rgba(51, 65, 85, 0.7)",
+            background: "var(--bg-card)",
+            border: "1px solid var(--border-primary)",
           }}
         >
           <div className="flex-shrink-0 mt-1">
@@ -37,7 +37,7 @@ export default function DiscoveryTimeline({ entries }: DiscoveryTimelineProps) {
               </span>
               <span
                 className="px-2 py-0.5 rounded-md text-[10px] font-bold uppercase"
-                style={{ background: "rgba(96, 165, 250, 0.15)", color: "#60a5fa" }}
+                style={{ background: "rgba(37, 99, 235, 0.08)", color: "#2563eb" }}
               >
                 {entry.source}
               </span>

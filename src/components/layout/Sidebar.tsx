@@ -14,7 +14,7 @@ const NAV_ITEMS = [
 ];
 
 function NavIcon({ icon, active }: { icon: string; active: boolean }) {
-  const color = active ? "#60a5fa" : "#475569";
+  const color = active ? "#2563eb" : "#94a3b8";
   switch (icon) {
     case "dashboard":
       return (
@@ -80,7 +80,7 @@ export default function Sidebar() {
     <aside
       className="w-[240px] min-h-screen flex flex-col"
       style={{
-        background: "linear-gradient(180deg, var(--bg-sidebar) 0%, #060a14 100%)",
+        background: "linear-gradient(180deg, var(--bg-sidebar) 0%, #e2e8f0 100%)",
         borderRight: "1px solid var(--border-subtle)",
       }}
     >
@@ -90,8 +90,8 @@ export default function Sidebar() {
           <div
             className="w-9 h-9 rounded-xl flex items-center justify-center"
             style={{
-              background: "linear-gradient(135deg, #2563eb, #14b8a6)",
-              boxShadow: "0 0 20px rgba(37, 99, 235, 0.3)",
+              background: "linear-gradient(135deg, #2563eb, #0d9488)",
+              boxShadow: "0 2px 8px rgba(37, 99, 235, 0.2)",
             }}
           >
             <span className="text-white font-bold text-sm">BO</span>

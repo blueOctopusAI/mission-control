@@ -8,11 +8,11 @@ interface ToolGridProps {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  Documented: "#60a5fa",
-  Installed: "#2dd4bf",
-  Tested: "#34d399",
-  "In Use": "#34d399",
-  Rejected: "#f87171",
+  Documented: "#2563eb",
+  Installed: "#0d9488",
+  Tested: "#059669",
+  "In Use": "#059669",
+  Rejected: "#dc2626",
   Pending: "#475569",
 };
 

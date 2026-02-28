@@ -80,15 +80,25 @@ export function parseJobTracker(): TrackerData {
       today.setHours(0, 0, 0, 0);
       for (const cols of rows) {
         if (cols.length >= 6) {
-          const dueDate = new Date(cols[4]);
+          // Skip completed follow-ups
+          const action = cols[3].toLowerCase();
+          const status = cols[5].toLowerCase();
+          if (action.includes("✅") || status === "done" || status === "—" && action.includes("done")) continue;
+
+          const dueDateStr = cols[4];
+          const dueDate = new Date(dueDateStr);
+          const hasValidDate = !isNaN(dueDate.getTime()) && dueDateStr !== "—" && dueDateStr !== "Done";
           dueDate.setHours(0, 0, 0, 0);
-          const daysUntil = Math.round((dueDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+          const daysUntil = hasValidDate
+            ? Math.round((dueDate.getTime() - today.getTime()) / (1000 * 60 * 60 * 24))
+            : 999; // no due date = low urgency, sort to end
+
           followUps.push({
             txId: cols[0],
             company: cols[1],
             contact: cols[2],
             actionDue: cols[3],
-            dueDate: cols[4],
+            dueDate: hasValidDate ? dueDateStr : "—",
             daysUntil,
           });
         }

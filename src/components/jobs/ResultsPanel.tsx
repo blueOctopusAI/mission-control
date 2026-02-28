@@ -6,10 +6,10 @@ interface ResultsPanelProps {
 
 function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
   return (
-    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid rgba(51, 65, 85, 0.7)" }}>
+    <div className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--border-primary)" }}>
       <table className="w-full text-left">
         <thead>
-          <tr style={{ background: "rgba(30, 41, 59, 0.8)" }}>
+          <tr style={{ background: "var(--bg-secondary)" }}>
             {headers.map((h) => (
               <th key={h} className="py-2.5 px-4 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>
                 {h}
@@ -19,7 +19,7 @@ function DataTable({ headers, rows }: { headers: string[]; rows: string[][] }) {
         </thead>
         <tbody>
           {rows.map((row, i) => (
-            <tr key={i} className="border-t" style={{ borderColor: "rgba(51, 65, 85, 0.5)" }}>
+            <tr key={i} className="border-t" style={{ borderColor: "var(--border-subtle)" }}>
               {row.map((cell, j) => (
                 <td
                   key={j}
@@ -90,7 +90,7 @@ export default function ResultsPanel({ results }: ResultsPanelProps) {
               <div
                 key={i}
                 className="rounded-xl p-4"
-                style={{ background: "rgba(30, 41, 59, 0.6)", border: "1px solid rgba(51, 65, 85, 0.7)" }}
+                style={{ background: "var(--bg-card)", border: "1px solid var(--border-primary)" }}
               >
                 <div className="flex items-center gap-2 mb-2.5">
                   <span className="text-xs font-mono-data font-semibold" style={{ color: "var(--accent-blue-light)" }}>

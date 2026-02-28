@@ -16,12 +16,12 @@ const PLATFORM_ICONS: Record<string, string> = {
 };
 
 const PLATFORM_COLORS: Record<string, string> = {
-  "Blue Octopus Blog": "#7bb5ff",
-  "Blue Octopus LinkedIn": "#38bdf8",
-  "Blue Octopus X": "#cbd5e1",
-  "Blue Octopus YouTube": "#fb7185",
-  "UtilitarianTechnology YouTube": "#fcd34d",
-  "OpenClaw Posts": "#5eead4",
+  "Blue Octopus Blog": "#2563eb",
+  "Blue Octopus LinkedIn": "#0284c7",
+  "Blue Octopus X": "#64748b",
+  "Blue Octopus YouTube": "#dc2626",
+  "UtilitarianTechnology YouTube": "#d97706",
+  "OpenClaw Posts": "#0d9488",
 };
 
 export default function ContentCard({ piece }: ContentCardProps) {

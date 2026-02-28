@@ -8,27 +8,27 @@ interface OpportunityCardsProps {
 }
 
 const STATUS_COLORS: Record<string, { bg: string; text: string }> = {
-  discovered: { bg: "rgba(148, 163, 184, 0.15)", text: "#94a3b8" },
-  analyzing: { bg: "rgba(167, 139, 250, 0.15)", text: "#a78bfa" },
-  identified: { bg: "rgba(96, 165, 250, 0.15)", text: "#60a5fa" },
-  tailoring: { bg: "rgba(251, 191, 36, 0.15)", text: "#fbbf24" },
-  applied: { bg: "rgba(14, 165, 233, 0.15)", text: "#38bdf8" },
-  "phone-screen": { bg: "rgba(45, 212, 191, 0.15)", text: "#2dd4bf" },
-  technical: { bg: "rgba(52, 211, 153, 0.18)", text: "#34d399" },
-  final: { bg: "rgba(52, 211, 153, 0.22)", text: "#34d399" },
-  offer: { bg: "rgba(52, 211, 153, 0.28)", text: "#10b981" },
-  rejected: { bg: "rgba(248, 113, 113, 0.15)", text: "#f87171" },
-  ghosted: { bg: "rgba(71, 85, 105, 0.2)", text: "#64748b" },
-  withdrawn: { bg: "rgba(71, 85, 105, 0.2)", text: "#64748b" },
-  expired: { bg: "rgba(71, 85, 105, 0.2)", text: "#64748b" },
+  discovered: { bg: "rgba(100, 116, 139, 0.08)", text: "#475569" },
+  analyzing: { bg: "rgba(124, 58, 237, 0.08)", text: "#7c3aed" },
+  identified: { bg: "rgba(37, 99, 235, 0.08)", text: "#2563eb" },
+  tailoring: { bg: "rgba(217, 119, 6, 0.08)", text: "#d97706" },
+  applied: { bg: "rgba(2, 132, 199, 0.08)", text: "#0284c7" },
+  "phone-screen": { bg: "rgba(13, 148, 136, 0.08)", text: "#0d9488" },
+  technical: { bg: "rgba(5, 150, 105, 0.10)", text: "#059669" },
+  final: { bg: "rgba(5, 150, 105, 0.12)", text: "#059669" },
+  offer: { bg: "rgba(4, 120, 87, 0.15)", text: "#047857" },
+  rejected: { bg: "rgba(220, 38, 38, 0.08)", text: "#dc2626" },
+  ghosted: { bg: "rgba(71, 85, 105, 0.08)", text: "#475569" },
+  withdrawn: { bg: "rgba(71, 85, 105, 0.08)", text: "#475569" },
+  expired: { bg: "rgba(71, 85, 105, 0.08)", text: "#475569" },
 };
 
 function getMatchColor(match: string): string {
   const lower = match.toLowerCase();
-  if (lower.includes("strong")) return "#34d399";
-  if (lower.includes("bonus")) return "#60a5fa";
-  if (lower.includes("gap")) return "#f87171";
-  if (lower.includes("adjacent") || lower.includes("ai-assisted")) return "#fbbf24";
+  if (lower.includes("strong")) return "#059669";
+  if (lower.includes("bonus")) return "#2563eb";
+  if (lower.includes("gap")) return "#dc2626";
+  if (lower.includes("adjacent") || lower.includes("ai-assisted")) return "#d97706";
   return "var(--text-secondary)";
 }
 
@@ -41,8 +41,8 @@ function OpportunityCard({ op }: { op: Opportunity }) {
       className="rounded-xl p-5 cursor-pointer transition-all"
       onClick={() => setExpanded(!expanded)}
       style={{
-        background: "rgba(30, 41, 59, 0.6)",
-        border: `1px solid rgba(51, 65, 85, 0.7)`,
+        background: "var(--bg-card)",
+        border: `1px solid var(--border-primary)`,
         borderLeft: `4px solid ${statusColor.text}`,
       }}
     >
@@ -81,7 +81,7 @@ function OpportunityCard({ op }: { op: Opportunity }) {
       <div className="flex items-center gap-4 text-sm">
         {op.location && <span style={{ color: "var(--text-secondary)" }}>{op.location}</span>}
         {op.salary && (
-          <span className="font-mono-data font-bold" style={{ color: "#34d399" }}>
+          <span className="font-mono-data font-bold" style={{ color: "#059669" }}>
             {op.salary}
           </span>
         )}
@@ -94,7 +94,7 @@ function OpportunityCard({ op }: { op: Opportunity }) {
       {expanded && (
         <div
           className="mt-4 pt-4 space-y-4"
-          style={{ borderTop: "1px solid rgba(51, 65, 85, 0.7)" }}
+          style={{ borderTop: "1px solid var(--border-primary)" }}
         >
           {/* Fit assessment table */}
           {op.fitAssessment.length > 0 && (
@@ -102,10 +102,10 @@ function OpportunityCard({ op }: { op: Opportunity }) {
               <div className="text-xs font-bold uppercase tracking-wider mb-2" style={{ color: "var(--text-secondary)" }}>
                 Fit Assessment
               </div>
-              <div className="rounded-lg overflow-hidden" style={{ border: "1px solid rgba(51, 65, 85, 0.7)" }}>
+              <div className="rounded-lg overflow-hidden" style={{ border: "1px solid var(--border-primary)" }}>
                 <table className="w-full text-left">
                   <thead>
-                    <tr style={{ background: "rgba(30, 41, 59, 0.8)" }}>
+                    <tr style={{ background: "var(--bg-secondary)" }}>
                       <th className="py-2 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Requirement</th>
                       <th className="py-2 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Level</th>
                       <th className="py-2 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Match</th>
@@ -113,7 +113,7 @@ function OpportunityCard({ op }: { op: Opportunity }) {
                   </thead>
                   <tbody>
                     {op.fitAssessment.map((row, i) => (
-                      <tr key={i} className="border-t" style={{ borderColor: "rgba(51, 65, 85, 0.5)" }}>
+                      <tr key={i} className="border-t" style={{ borderColor: "var(--border-subtle)" }}>
                         <td className="py-2 px-3 text-sm font-medium" style={{ color: "var(--text-primary)" }}>
                           {row.requirement}
                         </td>
@@ -162,7 +162,7 @@ function OpportunityCard({ op }: { op: Opportunity }) {
                   const label = m.replace(/^- \[[ x]\]\s*/, "");
                   return (
                     <div key={i} className="flex items-center gap-2 text-sm">
-                      <span style={{ color: done ? "#34d399" : "var(--text-muted)" }}>
+                      <span style={{ color: done ? "#059669" : "var(--text-muted)" }}>
                         {done ? "✓" : "○"}
                       </span>
                       <span style={{ color: done ? "var(--text-primary)" : "var(--text-secondary)" }}>

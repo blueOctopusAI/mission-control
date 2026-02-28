@@ -39,7 +39,7 @@ function JobRow({ job, variant }: { job: PipelineJob; variant: "active" | "compl
       </td>
       {variant === "active" && (
         <>
-          <td className="py-2.5 px-3 text-sm font-mono-data" style={{ color: "#0ea5e9" }}>
+          <td className="py-2.5 px-3 text-sm font-mono-data" style={{ color: "#0284c7" }}>
             {job.progress}
           </td>
           <td className="py-2.5 px-3 text-sm" style={{ color: "var(--text-secondary)" }}>
@@ -120,7 +120,7 @@ export default function PipelinePage() {
             <div className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--border-subtle)" }}>
               <table className="w-full text-left">
                 <thead>
-                  <tr style={{ background: "rgba(30, 41, 59, 0.6)" }}>
+                  <tr style={{ background: "var(--bg-secondary)" }}>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>ID</th>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Type</th>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Source</th>
@@ -150,7 +150,7 @@ export default function PipelinePage() {
             <div className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--border-subtle)" }}>
               <table className="w-full text-left">
                 <thead>
-                  <tr style={{ background: "rgba(30, 41, 59, 0.6)" }}>
+                  <tr style={{ background: "var(--bg-secondary)" }}>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>ID</th>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Type</th>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Source</th>
@@ -182,7 +182,7 @@ export default function PipelinePage() {
             <div className="rounded-xl overflow-hidden" style={{ border: "1px solid var(--border-subtle)" }}>
               <table className="w-full text-left">
                 <thead>
-                  <tr style={{ background: "rgba(30, 41, 59, 0.6)" }}>
+                  <tr style={{ background: "var(--bg-secondary)" }}>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>ID</th>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Type</th>
                     <th className="py-2.5 px-3 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>Source</th>

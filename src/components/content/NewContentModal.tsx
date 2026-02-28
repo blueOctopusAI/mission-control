@@ -66,7 +66,7 @@ export default function NewContentModal({ open, onClose, onAdd }: NewContentModa
   return (
     <div
       className="fixed inset-0 z-50 flex items-center justify-center"
-      style={{ background: "rgba(0, 0, 0, 0.7)", backdropFilter: "blur(4px)" }}
+      style={{ background: "rgba(0, 0, 0, 0.3)", backdropFilter: "blur(4px)" }}
       onClick={onClose}
     >
       <div
@@ -74,7 +74,7 @@ export default function NewContentModal({ open, onClose, onAdd }: NewContentModa
         style={{
           background: "var(--bg-card-solid)",
           border: "1px solid var(--border-subtle)",
-          boxShadow: "0 25px 50px rgba(0, 0, 0, 0.5)",
+          boxShadow: "0 25px 50px rgba(0, 0, 0, 0.15)",
         }}
         onClick={(e) => e.stopPropagation()}
       >

@@ -12,13 +12,13 @@ interface KanbanColumnProps {
 }
 
 const STAGE_COLORS: Record<string, string> = {
-  Idea: "#64748b",
-  Research: "#c4b5fd",
-  Outline: "#5eead4",
-  Draft: "#7bb5ff",
-  Review: "#fcd34d",
-  Scheduled: "#4ade80",
-  Published: "#4ade80",
+  Idea: "#475569",
+  Research: "#7c3aed",
+  Outline: "#0d9488",
+  Draft: "#2563eb",
+  Review: "#d97706",
+  Scheduled: "#16a34a",
+  Published: "#16a34a",
 };
 
 function DraggableCard({ piece }: { piece: ContentPiece }) {

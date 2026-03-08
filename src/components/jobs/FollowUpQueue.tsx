@@ -1,3 +1,7 @@
+"use client";
+
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import type { FollowUp } from "@/lib/types";
 
 interface FollowUpQueueProps {
@@ -5,10 +9,10 @@ interface FollowUpQueueProps {
 }
 
 function getUrgencyColor(daysUntil: number): { bg: string; text: string; dot: string; border: string } {
-  if (daysUntil < 0) return { bg: "rgba(220, 38, 38, 0.08)", text: "#dc2626", dot: "#dc2626", border: "rgba(220, 38, 38, 0.2)" };
-  if (daysUntil <= 1) return { bg: "rgba(217, 119, 6, 0.08)", text: "#d97706", dot: "#d97706", border: "rgba(217, 119, 6, 0.2)" };
-  if (daysUntil <= 3) return { bg: "rgba(37, 99, 235, 0.06)", text: "#2563eb", dot: "#2563eb", border: "rgba(37, 99, 235, 0.15)" };
-  return { bg: "rgba(5, 150, 105, 0.06)", text: "#059669", dot: "#059669", border: "rgba(5, 150, 105, 0.15)" };
+  if (daysUntil < 0) return { bg: "rgba(251, 113, 133, 0.08)", text: "#fb7185", dot: "#fb7185", border: "rgba(251, 113, 133, 0.2)" };
+  if (daysUntil <= 1) return { bg: "rgba(251, 191, 36, 0.08)", text: "#fbbf24", dot: "#fbbf24", border: "rgba(251, 191, 36, 0.2)" };
+  if (daysUntil <= 3) return { bg: "rgba(79, 180, 232, 0.06)", text: "#4FB4E8", dot: "#4FB4E8", border: "rgba(79, 180, 232, 0.15)" };
+  return { bg: "rgba(52, 211, 153, 0.06)", text: "#34d399", dot: "#34d399", border: "rgba(52, 211, 153, 0.15)" };
 }
 
 function getUrgencyLabel(daysUntil: number): string {
@@ -22,13 +26,36 @@ function getUrgencyLabel(daysUntil: number): string {
 }
 
 export default function FollowUpQueue({ followUps }: FollowUpQueueProps) {
-  const sorted = [...followUps].sort((a, b) => a.daysUntil - b.daysUntil);
+  const router = useRouter();
+  const [dismissed, setDismissed] = useState<Set<string>>(new Set());
+  const [loading, setLoading] = useState<string | null>(null);
+
+  const sorted = [...followUps]
+    .filter((fu) => !dismissed.has(fu.txId))
+    .sort((a, b) => a.daysUntil - b.daysUntil);
+
+  async function markDone(txId: string) {
+    setLoading(txId);
+    try {
+      const res = await fetch("/api/jobs", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "followup-done", txId }),
+      });
+      if (res.ok) {
+        setDismissed((prev) => new Set(prev).add(txId));
+        router.refresh();
+      }
+    } finally {
+      setLoading(null);
+    }
+  }
 
   if (sorted.length === 0) {
     return (
       <div
         className="rounded-xl p-5"
-        style={{ background: "var(--bg-card)", border: "1px solid var(--border-primary)" }}
+        style={{ background: "var(--bg-card)", border: "1px solid var(--border-subtle)" }}
       >
         <p className="text-sm" style={{ color: "var(--text-secondary)" }}>No follow-ups due</p>
       </div>
@@ -39,6 +66,7 @@ export default function FollowUpQueue({ followUps }: FollowUpQueueProps) {
     <div className="space-y-2">
       {sorted.map((fu) => {
         const urgency = getUrgencyColor(fu.daysUntil);
+        const isLoading = loading === fu.txId;
         return (
           <div
             key={fu.txId}
@@ -80,6 +108,19 @@ export default function FollowUpQueue({ followUps }: FollowUpQueueProps) {
               >
                 {getUrgencyLabel(fu.daysUntil)}
               </span>
+              <button
+                onClick={() => markDone(fu.txId)}
+                disabled={isLoading}
+                className="text-xs font-medium px-2.5 py-1 rounded-lg cursor-pointer transition-all"
+                style={{
+                  background: "rgba(52, 211, 153, 0.1)",
+                  color: "var(--status-healthy)",
+                  border: "1px solid rgba(52, 211, 153, 0.2)",
+                  opacity: isLoading ? 0.5 : 1,
+                }}
+              >
+                {isLoading ? "..." : "Done"}
+              </button>
             </div>
           </div>
         );

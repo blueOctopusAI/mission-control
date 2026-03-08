@@ -19,6 +19,7 @@ export const FILES = {
   toolsDir: path.join(INTELLIGENCE_HUB_PATH, "knowledge/tools"),
   strategiesDir: path.join(INTELLIGENCE_HUB_PATH, "knowledge/strategies"),
   videoPipeline: path.join(INTELLIGENCE_HUB_PATH, "status", "video-pipeline-status.md"),
+  operationsStatus: path.join(INTELLIGENCE_HUB_PATH, "status", "operations-status.md"),
   // Job search pipeline files
   jobCompanies: path.join(JOB_SEARCH_PATH, "Pipeline", "companies.md"),
   jobOpportunities: path.join(JOB_SEARCH_PATH, "Pipeline", "opportunities.md"),

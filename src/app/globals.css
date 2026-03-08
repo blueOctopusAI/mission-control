@@ -1,29 +1,29 @@
 @import "tailwindcss";
 
 :root {
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-card: rgba(255, 255, 255, 0.9);
-  --bg-card-solid: #ffffff;
-  --bg-card-hover: rgba(241, 245, 249, 0.95);
-  --bg-sidebar: #f8fafc;
-  --accent-blue: #2563eb;
-  --accent-blue-light: #3b82f6;
-  --accent-teal: #0d9488;
-  --accent-purple: #7c3aed;
-  --accent-amber: #d97706;
-  --accent-pink: #db2777;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-  --status-healthy: #16a34a;
-  --status-stale: #ca8a04;
-  --status-blocked: #e11d48;
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-glow: rgba(37, 99, 235, 0.3);
-  --glow-blue: 0 4px 14px rgba(37, 99, 235, 0.08);
-  --glow-teal: 0 4px 14px rgba(13, 148, 136, 0.08);
-  --glow-purple: 0 4px 14px rgba(124, 58, 237, 0.08);
+  --bg-primary: #0D1B2A;
+  --bg-secondary: #132238;
+  --bg-card: rgba(19, 34, 56, 0.85);
+  --bg-card-solid: #152640;
+  --bg-card-hover: rgba(25, 45, 72, 0.9);
+  --bg-sidebar: #091525;
+  --accent-blue: #4FB4E8;
+  --accent-blue-light: #6BC5F0;
+  --accent-teal: #4FB4E8;
+  --accent-purple: #a78bfa;
+  --accent-amber: #FF914D;
+  --accent-pink: #f472b6;
+  --text-primary: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --status-healthy: #34d399;
+  --status-stale: #fbbf24;
+  --status-blocked: #fb7185;
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-glow: rgba(79, 180, 232, 0.3);
+  --glow-blue: 0 4px 14px rgba(79, 180, 232, 0.12);
+  --glow-teal: 0 4px 14px rgba(79, 180, 232, 0.08);
+  --glow-purple: 0 4px 14px rgba(167, 139, 250, 0.08);
 }
 
 @theme inline {
@@ -55,17 +55,17 @@ body {
 /* Background grid pattern */
 .bg-grid {
   background-image:
-    linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
   background-size: 60px 60px;
 }
 
 /* Background radial glow */
 .bg-glow {
   background:
-    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(37, 99, 235, 0.04), transparent),
-    radial-gradient(ellipse 30% 50% at 80% 20%, rgba(13, 148, 136, 0.03), transparent),
-    radial-gradient(ellipse 30% 50% at 20% 80%, rgba(124, 58, 237, 0.03), transparent);
+    radial-gradient(ellipse 50% 40% at 50% 0%, rgba(79, 180, 232, 0.06), transparent),
+    radial-gradient(ellipse 30% 50% at 80% 20%, rgba(255, 145, 77, 0.04), transparent),
+    radial-gradient(ellipse 30% 50% at 20% 80%, rgba(167, 139, 250, 0.03), transparent);
 }
 
 /* Scrollbar styling */
@@ -79,12 +79,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.12);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.2);
 }
 
 /* Card base */
@@ -96,7 +96,7 @@ body {
   border-radius: 12px;
   padding: 1.25rem;
   transition: all 0.25s ease;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .card:hover {
@@ -112,24 +112,28 @@ body {
   border: 1px solid var(--border-subtle);
   border-radius: 12px;
   padding: 1.25rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 /* Card with colored top border */
 .card-accent-blue {
   border-top: 2px solid var(--accent-blue);
+  box-shadow: 0 -4px 20px rgba(79, 180, 232, 0.08);
 }
 
 .card-accent-teal {
   border-top: 2px solid var(--accent-teal);
+  box-shadow: 0 -4px 20px rgba(79, 180, 232, 0.06);
 }
 
 .card-accent-purple {
   border-top: 2px solid var(--accent-purple);
+  box-shadow: 0 -4px 20px rgba(167, 139, 250, 0.06);
 }
 
 .card-accent-amber {
   border-top: 2px solid var(--accent-amber);
+  box-shadow: 0 -4px 20px rgba(255, 145, 77, 0.06);
 }
 
 /* Badge variants */
@@ -244,7 +248,7 @@ body {
 
 .hover-lift:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
 /* Input focus states */

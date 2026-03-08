@@ -358,6 +358,68 @@ export interface ResultsData {
   lessons: Lesson[];
 }
 
+// ============================================================
+// Operations (operations-status.md)
+// ============================================================
+
+export type RunStatus = "pass" | "fail" | "skip" | "unknown";
+
+export interface ScheduledTask {
+  name: string;
+  machine: "mac" | "windows";
+  schedule: string;
+  timeout: string;
+  lastRun: string;
+  status: RunStatus;
+  duration: string;
+}
+
+export interface RunHistoryEntry {
+  timestamp: string;
+  task: string;
+  exitBadge: RunStatus;
+  duration: string;
+  scan: string;
+  flagged: number;
+}
+
+export interface QueueTask {
+  id: string;
+  type: string;
+  priority: string;
+  created: string;
+  prompt: string;
+  completed?: string;
+}
+
+export interface MachineHealth {
+  machine: string;
+  status: string;
+  lastActivity: string;
+  passCount: number;
+  failCount: number;
+  notes: string;
+}
+
+export interface CalendarDay {
+  day: string;
+  isToday: boolean;
+  tasks: string[];
+}
+
+export interface OperationsData {
+  lastGenerated: string;
+  machineHealth: MachineHealth[];
+  macSchedule: ScheduledTask[];
+  winSchedule: ScheduledTask[];
+  calendar: CalendarDay[];
+  continuousNote: string;
+  runHistory: RunHistoryEntry[];
+  pendingTasks: QueueTask[];
+  completedTasks: QueueTask[];
+  nasAvailable: boolean;
+}
+
 export interface DiscoveryEntry {
   timestamp: string;
   source: string;

@@ -1,6 +1,4 @@
-"use client";
-
-import { useState } from "react";
+import Link from "next/link";
 import type { ToolEval } from "@/lib/types";
 
 interface ToolGridProps {
@@ -8,27 +6,25 @@ interface ToolGridProps {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  Documented: "#2563eb",
+  Documented: "#4FB4E8",
   Installed: "#0d9488",
-  Tested: "#059669",
-  "In Use": "#059669",
-  Rejected: "#dc2626",
-  Pending: "#475569",
+  Tested: "#34d399",
+  "In Use": "#34d399",
+  Rejected: "#fb7185",
+  Pending: "#64748b",
 };
 
 function ToolCard({ tool }: { tool: ToolEval }) {
-  const [expanded, setExpanded] = useState(false);
-  const statusColor = STATUS_COLORS[tool.status] || "#475569";
+  const statusColor = STATUS_COLORS[tool.status] || "#64748b";
 
   return (
-    <div
-      className="rounded-xl p-4 cursor-pointer hover-lift"
-      onClick={() => setExpanded(!expanded)}
+    <Link
+      href={`/tools/${encodeURIComponent(tool.slug)}`}
+      className="rounded-xl p-4 hover-lift block"
       style={{
         background: "var(--bg-card)",
         border: "1px solid var(--border-subtle)",
         borderTop: `2px solid ${statusColor}`,
-        backdropFilter: "blur(12px)",
       }}
     >
       <div className="flex items-start justify-between mb-2">
@@ -50,48 +46,20 @@ function ToolCard({ tool }: { tool: ToolEval }) {
         {tool.what.slice(0, 150)}
         {tool.what.length > 150 ? "..." : ""}
       </p>
-
-      {expanded && (
-        <div
-          className="mt-3 pt-3 space-y-2.5 text-xs"
-          style={{ borderTop: "1px solid var(--border-subtle)" }}
-        >
-          {tool.useCases.length > 0 && (
-            <div>
-              <span className="font-bold text-[10px] uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
-                Use Cases
-              </span>
-              <ul className="mt-1.5 space-y-1">
-                {tool.useCases.map((uc, i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <div className="w-1 h-1 rounded-full mt-1.5 flex-shrink-0" style={{ background: statusColor }} />
-                    <span style={{ color: "var(--text-secondary)" }}>{uc}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {tool.securityNotes && (
-            <div>
-              <span className="font-bold text-[10px] uppercase tracking-wider" style={{ color: "var(--status-stale)" }}>
-                Security
-              </span>
-              <p className="mt-1" style={{ color: "var(--text-secondary)" }}>{tool.securityNotes}</p>
-            </div>
-          )}
-          {tool.installInstructions && (
-            <div>
-              <span className="font-bold text-[10px] uppercase tracking-wider" style={{ color: "var(--text-muted)" }}>
-                Install
-              </span>
-              <p className="font-mono-data text-[10px] mt-1 p-2 rounded-lg" style={{ color: "var(--text-secondary)", background: "rgba(6, 9, 15, 0.5)" }}>
-                {tool.installInstructions.slice(0, 200)}
-              </p>
-            </div>
-          )}
+      {tool.useCases.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-1">
+          {tool.useCases.slice(0, 3).map((uc, i) => (
+            <span
+              key={i}
+              className="text-[9px] px-1.5 py-0.5 rounded"
+              style={{ background: "rgba(255,255,255,0.05)", color: "var(--text-muted)" }}
+            >
+              {uc.slice(0, 30)}{uc.length > 30 ? "..." : ""}
+            </span>
+          ))}
         </div>
       )}
-    </div>
+    </Link>
   );
 }
 
@@ -121,7 +89,7 @@ export default function ToolGrid({ tools }: ToolGridProps) {
         <div className="flex gap-3">
           {stages.map((stage) => {
             const count = statusCounts[stage] || 0;
-            const color = STATUS_COLORS[stage] || "#475569";
+            const color = STATUS_COLORS[stage] || "#64748b";
             return (
               <div
                 key={stage}

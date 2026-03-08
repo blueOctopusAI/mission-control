@@ -10,11 +10,11 @@ const NAV_ITEMS = [
   { href: "/content", label: "Content", icon: "kanban" },
   { href: "/research", label: "Research", icon: "search" },
   { href: "/tools", label: "Tools", icon: "wrench" },
-  { href: "/pipeline", label: "Pipeline", icon: "video" },
+  { href: "/operations", label: "Operations", icon: "server" },
 ];
 
 function NavIcon({ icon, active }: { icon: string; active: boolean }) {
-  const color = active ? "#2563eb" : "#94a3b8";
+  const color = active ? "#4FB4E8" : "#64748b";
   switch (icon) {
     case "dashboard":
       return (
@@ -68,6 +68,15 @@ function NavIcon({ icon, active }: { icon: string; active: boolean }) {
           <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
         </svg>
       );
+    case "server":
+      return (
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+          <rect x="2" y="2" width="20" height="8" rx="2" ry="2" />
+          <rect x="2" y="14" width="20" height="8" rx="2" ry="2" />
+          <line x1="6" y1="6" x2="6.01" y2="6" />
+          <line x1="6" y1="18" x2="6.01" y2="18" />
+        </svg>
+      );
     default:
       return null;
   }
@@ -80,7 +89,7 @@ export default function Sidebar() {
     <aside
       className="w-[240px] min-h-screen flex flex-col"
       style={{
-        background: "linear-gradient(180deg, var(--bg-sidebar) 0%, #e2e8f0 100%)",
+        background: "linear-gradient(180deg, var(--bg-sidebar) 0%, #060f1a 100%)",
         borderRight: "1px solid var(--border-subtle)",
       }}
     >
@@ -90,8 +99,8 @@ export default function Sidebar() {
           <div
             className="w-9 h-9 rounded-xl flex items-center justify-center"
             style={{
-              background: "linear-gradient(135deg, #2563eb, #0d9488)",
-              boxShadow: "0 2px 8px rgba(37, 99, 235, 0.2)",
+              background: "linear-gradient(135deg, #4FB4E8, #FF914D)",
+              boxShadow: "0 2px 8px rgba(79, 180, 232, 0.3)",
             }}
           >
             <span className="text-white font-bold text-sm">BO</span>
@@ -119,9 +128,9 @@ export default function Sidebar() {
               href={item.href}
               className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all"
               style={{
-                background: active ? "rgba(37, 99, 235, 0.1)" : "transparent",
+                background: active ? "rgba(79, 180, 232, 0.1)" : "transparent",
                 color: active ? "var(--accent-blue-light)" : "var(--text-secondary)",
-                boxShadow: active ? "inset 0 0 0 1px rgba(37, 99, 235, 0.15)" : "none",
+                boxShadow: active ? "inset 0 0 0 1px rgba(79, 180, 232, 0.15)" : "none",
               }}
             >
               <NavIcon icon={item.icon} active={active} />

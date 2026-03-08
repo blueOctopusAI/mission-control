@@ -1,6 +1,6 @@
 import fs from "fs";
 import { FILES } from "../config";
-import { updateLastUpdated } from "./markdown-utils";
+import { updateLastUpdated, updateMarkdownField } from "./markdown-utils";
 
 export function updateRecommendationVote(
   recNumber: number,
@@ -19,6 +19,43 @@ export function updateRecommendationVote(
       const sign = newVotes >= 0 ? "+" : "";
       lines[i] = `| ${match[1]} |${match[2]}|${match[3]}| ${sign}${newVotes} |${match[5]}|`;
       break;
+    }
+  }
+
+  fs.writeFileSync(FILES.projects, lines.join("\n"), "utf-8");
+  updateLastUpdated(FILES.projects);
+}
+
+export function markProjectTouched(projectName: string): void {
+  const today = new Date().toISOString().split("T")[0];
+  updateMarkdownField(FILES.projects, projectName, "Last touched", today);
+  updateLastUpdated(FILES.projects);
+}
+
+export function toggleProjectTodo(projectName: string, todoText: string): void {
+  const content = fs.readFileSync(FILES.projects, "utf-8");
+  const lines = content.split("\n");
+
+  // Find the project section, then the todo line
+  let inProject = false;
+  for (let i = 0; i < lines.length; i++) {
+    if (lines[i].startsWith(`### ${projectName}`)) {
+      inProject = true;
+      continue;
+    }
+    if (inProject && lines[i].startsWith("### ")) break;
+    if (inProject) {
+      const trimmed = lines[i].trim();
+      // Match unchecked todo
+      if (trimmed === `- [ ] ${todoText}`) {
+        lines[i] = lines[i].replace("- [ ]", "- [x]");
+        break;
+      }
+      // Match checked todo (toggle back)
+      if (trimmed === `- [x] ${todoText}`) {
+        lines[i] = lines[i].replace("- [x]", "- [ ]");
+        break;
+      }
     }
   }
 

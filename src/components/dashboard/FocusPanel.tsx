@@ -19,7 +19,7 @@ export default function FocusPanel({ recommendations, projects }: FocusPanelProp
   return (
     <div
       className="card-static card-accent-blue"
-      style={{ boxShadow: "0 0 30px rgba(37, 99, 235, 0.08)" }}
+      style={{ boxShadow: "0 0 30px rgba(79, 180, 232, 0.1)" }}
     >
       <div className="flex items-center gap-2 mb-4">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--accent-blue-light)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

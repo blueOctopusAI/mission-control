@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import type { Project } from "@/lib/types";
 
 interface ProjectCardProps {
@@ -31,13 +32,14 @@ function getMomentum(project: Project): { label: string; color: string } {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   const [expanded, setExpanded] = useState(false);
+  const router = useRouter();
   const momentum = getMomentum(project);
   const tierColor = TIER_COLORS[project.tier] || "#60a5fa";
 
   return (
     <div
       className="rounded-xl p-4 cursor-pointer hover-lift"
-      onClick={() => setExpanded(!expanded)}
+      onClick={() => router.push(`/projects/${encodeURIComponent(project.name)}`)}
       style={{
         background: "var(--bg-card)",
         border: `1px solid var(--border-subtle)`,

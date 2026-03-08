@@ -11,3 +11,4 @@ export { parseJobOpportunities } from "./job-opportunities";
 export { parseJobTracker } from "./job-tracker";
 export { parseJobResults } from "./job-results";
 export { parseJobDiscovery } from "./job-discovery";
+export { parseOperations } from "./operations";

@@ -9,7 +9,7 @@ export default function Header({ title, subtitle }: HeaderProps) {
       className="px-8 py-6"
       style={{ borderBottom: "1px solid var(--border-subtle)" }}
     >
-      <h1 className="text-2xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
+      <h1 className="font-display text-2xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
         {title}
       </h1>
       {subtitle && (

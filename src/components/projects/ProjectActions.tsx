@@ -112,9 +112,9 @@ export function TouchButton({ projectName }: TouchButtonProps) {
       disabled={loading}
       className="text-xs font-medium px-3 py-1.5 rounded-lg cursor-pointer transition-all"
       style={{
-        background: "rgba(79, 180, 232, 0.1)",
+        background: "rgba(6, 182, 212, 0.1)",
         color: "var(--accent-blue-light)",
-        border: "1px solid rgba(79, 180, 232, 0.2)",
+        border: "1px solid rgba(6, 182, 212, 0.2)",
         opacity: loading ? 0.5 : 1,
       }}
     >

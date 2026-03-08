@@ -1,4 +1,3 @@
-import Header from "@/components/layout/Header";
 import AlertsPanel from "@/components/dashboard/AlertsPanel";
 import FocusPanel from "@/components/dashboard/FocusPanel";
 import RecommendationCard from "@/components/dashboard/RecommendationCard";
@@ -44,11 +43,11 @@ function computeAlerts(): Alert[] {
 }
 
 const TIER_COLORS: Record<string, string> = {
-  ACTIVE: "#2563eb",
-  READY: "#0d9488",
-  INCUBATING: "#7c3aed",
-  SUPPORTING: "#64748b",
-  DORMANT: "#94a3b8",
+  ACTIVE: "#06B6D4",
+  READY: "#06B6D4",
+  INCUBATING: "#a78bfa",
+  SUPPORTING: "#6B7280",
+  DORMANT: "#9CA3AF",
   PORTFOLIO: "#cbd5e1",
 };
 
@@ -62,20 +61,18 @@ function getMomentum(project: Project): { label: string; color: string; days: nu
 }
 
 function ProjectRow({ project }: { project: Project }) {
-  const color = TIER_COLORS[project.tier] || "#60a5fa";
+  const color = TIER_COLORS[project.tier] || "#06B6D4";
   const momentum = getMomentum(project);
 
   return (
     <Link
       href={`/projects/${encodeURIComponent(project.name)}`}
-      className="flex items-center gap-3 px-4 py-3 rounded-lg transition-all hover-lift"
+      className="flex items-center gap-3 px-4 py-3 rounded-lg transition-colors"
       style={{
-        background: "var(--bg-card)",
         border: "1px solid var(--border-subtle)",
         borderLeft: `3px solid ${color}`,
       }}
     >
-      {/* Momentum dot */}
       <div
         className="w-2 h-2 rounded-full flex-shrink-0"
         style={{
@@ -83,15 +80,12 @@ function ProjectRow({ project }: { project: Project }) {
           boxShadow: momentum.days <= 1 ? `0 0 6px ${momentum.color}` : "none",
         }}
       />
-      {/* Name */}
       <span className="text-sm font-semibold flex-shrink-0" style={{ color: "var(--text-primary)", minWidth: "140px" }}>
         {project.name}
       </span>
-      {/* Tier badge */}
       <span className={`badge badge-${project.tier.toLowerCase()} text-[9px] flex-shrink-0`}>
         {project.tier}
       </span>
-      {/* Next action or blocker */}
       <span className="text-xs truncate flex-1" style={{ color: project.isBlocked ? "var(--status-blocked)" : "var(--text-muted)" }}>
         {project.isBlocked
           ? `Blocked: ${project.blockers?.slice(0, 80)}`
@@ -99,7 +93,6 @@ function ProjectRow({ project }: { project: Project }) {
             ? project.nextActions[0]
             : project.status?.slice(0, 80) || ""}
       </span>
-      {/* Days */}
       <span className="text-xs font-mono-data flex-shrink-0" style={{ color: momentum.color }}>
         {momentum.days >= 0 ? `${momentum.days}d` : ""}
       </span>
@@ -116,7 +109,6 @@ export default function DashboardPage() {
     (p) => p.tier === "ACTIVE" || p.tier === "READY" || p.tier === "INCUBATING"
   );
 
-  // Sort: blocked first, then by last touched (most recent first)
   const sortedProjects = [...activeProjects].sort((a, b) => {
     if (a.isBlocked && !b.isBlocked) return -1;
     if (!a.isBlocked && b.isBlocked) return 1;
@@ -130,7 +122,6 @@ export default function DashboardPage() {
     .sort((a, b) => b.votes - a.votes)
     .slice(0, 5);
 
-  // Smart greeting based on time of day
   const hour = new Date().getHours();
   const greeting = hour < 12 ? "Morning" : hour < 17 ? "Afternoon" : "Evening";
   const activeCount = activeProjects.length;
@@ -140,7 +131,6 @@ export default function DashboardPage() {
     return Math.floor((Date.now() - d.getTime()) / 86400000) > 6;
   }).length;
 
-  // Octo's status line
   const statusLine = blockedCount > 0
     ? `${blockedCount} blocked. Let's fix that first.`
     : staleCount > 2
@@ -151,26 +141,18 @@ export default function DashboardPage() {
 
   return (
     <div>
+      {/* Header */}
       <header className="px-8 py-6" style={{ borderBottom: "1px solid var(--border-subtle)" }}>
-        <div className="flex items-center gap-3">
-          <div
-            className="w-8 h-8 rounded-lg flex items-center justify-center"
-            style={{ background: "linear-gradient(135deg, #4FB4E8, #FF914D)", boxShadow: "0 2px 8px rgba(79, 180, 232, 0.3)" }}
-          >
-            <span className="text-white font-bold text-xs">BO</span>
-          </div>
-          <div>
-            <h1 className="text-2xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
-              {greeting}, Jason
-            </h1>
-            <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>
-              {statusLine}
-            </p>
-          </div>
-        </div>
+        <h1 className="font-display text-2xl font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
+          {greeting}, Jason
+        </h1>
+        <p className="text-sm mt-0.5" style={{ color: "var(--text-muted)" }}>
+          {statusLine}
+        </p>
       </header>
-      <div className="p-8 space-y-6">
-        {/* Top row: Focus + Alerts side by side */}
+
+      <div className="p-8 space-y-8">
+        {/* Focus + Alerts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
           <FocusPanel
             recommendations={projectsData.recommendations}
@@ -179,9 +161,9 @@ export default function DashboardPage() {
           <AlertsPanel alerts={alerts} />
         </div>
 
-        {/* Projects — compact list, not a card grid */}
+        {/* Projects */}
         <div>
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center gap-3 mb-4">
             <h3 className="section-title">Projects</h3>
             <span className="text-xs font-mono-data" style={{ color: "var(--text-muted)" }}>
               {activeProjects.length} active
@@ -195,11 +177,11 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Bottom row: Recommendations + Activity */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        {/* Recommendations + Activity */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {pendingRecs.length > 0 && (
             <div>
-              <div className="flex items-center gap-2 mb-3">
+              <div className="flex items-center gap-3 mb-4">
                 <h3 className="section-title">Top Recommendations</h3>
                 <div className="separator flex-1" />
               </div>
@@ -211,7 +193,7 @@ export default function DashboardPage() {
             </div>
           )}
           <div>
-            <div className="flex items-center gap-2 mb-3">
+            <div className="flex items-center gap-3 mb-4">
               <h3 className="section-title">Recent</h3>
               <div className="separator flex-1" />
             </div>

@@ -11,7 +11,7 @@ interface FollowUpQueueProps {
 function getUrgencyColor(daysUntil: number): { bg: string; text: string; dot: string; border: string } {
   if (daysUntil < 0) return { bg: "rgba(251, 113, 133, 0.08)", text: "#fb7185", dot: "#fb7185", border: "rgba(251, 113, 133, 0.2)" };
   if (daysUntil <= 1) return { bg: "rgba(251, 191, 36, 0.08)", text: "#fbbf24", dot: "#fbbf24", border: "rgba(251, 191, 36, 0.2)" };
-  if (daysUntil <= 3) return { bg: "rgba(79, 180, 232, 0.06)", text: "#4FB4E8", dot: "#4FB4E8", border: "rgba(79, 180, 232, 0.15)" };
+  if (daysUntil <= 3) return { bg: "rgba(6, 182, 212, 0.06)", text: "#06B6D4", dot: "#06B6D4", border: "rgba(6, 182, 212, 0.15)" };
   return { bg: "rgba(52, 211, 153, 0.06)", text: "#34d399", dot: "#34d399", border: "rgba(52, 211, 153, 0.15)" };
 }
 

@@ -14,7 +14,7 @@ const NAV_ITEMS = [
 ];
 
 function NavIcon({ icon, active }: { icon: string; active: boolean }) {
-  const color = active ? "#4FB4E8" : "#64748b";
+  const color = active ? "#06B6D4" : "#6B7280";
   switch (icon) {
     case "dashboard":
       return (
@@ -61,13 +61,6 @@ function NavIcon({ icon, active }: { icon: string; active: boolean }) {
           <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
         </svg>
       );
-    case "video":
-      return (
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-          <polygon points="23 7 16 12 23 17 23 7" />
-          <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
-        </svg>
-      );
     case "server":
       return (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -87,60 +80,43 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="w-[240px] min-h-screen flex flex-col"
+      className="w-[220px] min-h-screen flex flex-col border-r"
       style={{
-        background: "linear-gradient(180deg, var(--bg-sidebar) 0%, #060f1a 100%)",
-        borderRight: "1px solid var(--border-subtle)",
+        background: "var(--bg-sidebar)",
+        borderColor: "var(--border-subtle)",
       }}
     >
       {/* Logo */}
-      <div className="px-5 py-6">
+      <div className="px-5 py-5">
         <div className="flex items-center gap-3">
-          <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center"
-            style={{
-              background: "linear-gradient(135deg, #4FB4E8, #FF914D)",
-              boxShadow: "0 2px 8px rgba(79, 180, 232, 0.3)",
-            }}
-          >
-            <span className="text-white font-bold text-sm">BO</span>
+          <div className="font-display text-base font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
+            <span className="text-gradient">Mission</span> Control
           </div>
-          <div>
-            <div className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
-              Mission Control
-            </div>
-            <div className="text-[10px] font-medium" style={{ color: "var(--text-muted)" }}>
-              Blue Octopus Tech
-            </div>
-          </div>
+        </div>
+        <div className="text-[10px] font-medium mt-0.5" style={{ color: "var(--text-muted)" }}>
+          Blue Octopus Technology
         </div>
       </div>
 
       <div className="separator mx-5" />
 
       {/* Navigation */}
-      <nav className="flex-1 px-3 py-4 space-y-1">
+      <nav className="flex-1 px-3 py-4 space-y-0.5">
         {NAV_ITEMS.map((item) => {
           const active = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-lg text-[13px] font-medium transition-all"
+              className="flex items-center gap-3 px-3 py-2 rounded-lg text-[13px] font-medium transition-colors"
               style={{
-                background: active ? "rgba(79, 180, 232, 0.1)" : "transparent",
+                background: active ? "rgba(6, 182, 212, 0.08)" : "transparent",
                 color: active ? "var(--accent-blue-light)" : "var(--text-secondary)",
-                boxShadow: active ? "inset 0 0 0 1px rgba(79, 180, 232, 0.15)" : "none",
+                borderLeft: active ? "2px solid var(--accent-blue)" : "2px solid transparent",
               }}
             >
               <NavIcon icon={item.icon} active={active} />
               {item.label}
-              {active && (
-                <div
-                  className="w-1.5 h-1.5 rounded-full ml-auto"
-                  style={{ background: "var(--accent-blue-light)" }}
-                />
-              )}
             </Link>
           );
         })}

@@ -6,7 +6,7 @@ interface ToolGridProps {
 }
 
 const STATUS_COLORS: Record<string, string> = {
-  Documented: "#4FB4E8",
+  Documented: "#06B6D4",
   Installed: "#0d9488",
   Tested: "#34d399",
   "In Use": "#34d399",
